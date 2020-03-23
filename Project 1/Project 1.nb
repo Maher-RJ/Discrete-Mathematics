@@ -1,0 +1,4781 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    167860,       4773]
+NotebookOptionsPosition[    142487,       4309]
+NotebookOutlinePosition[    150107,       4506]
+CellTagsIndexPosition[    150064,       4503]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Report Project 1 ", "Title",
+ CellChangeTimes->{{3.745157548903453*^9, 
+  3.7451575522454367`*^9}},ExpressionUUID->"2e086750-1cf1-4c43-bc57-\
+bac07652a650"],
+
+Cell[TextData[{
+ "Course code: ",
+ StyleBox["IX1500", "Text",
+  FontColor->GrayLevel[0]],
+ "\nDate: 2018-09-14"
+}], "Text",
+ CellChangeTimes->{{3.745157556731069*^9, 3.7451575947415113`*^9}, 
+   3.7452991218564577`*^9},ExpressionUUID->"679e81cd-23f2-4ac3-aad0-\
+55498a6469d8"],
+
+Cell["\<\
+Maher Jabbar , Maherj@kth.se\t
+Simon Lagerqvist , simlag@kth.se
+\
+\>", "Text",
+ CellChangeTimes->{{3.745158614865509*^9, 3.7451586376560884`*^9}, {
+   3.7454114216231565`*^9, 3.7454114404363756`*^9}, 3.7455088936662197`*^9, {
+   3.745845159377378*^9, 3.7458451699528933`*^9}, {3.745845219443695*^9, 
+   3.745845227036433*^9}, 
+   3.745845673201136*^9},ExpressionUUID->"39bfcd1a-7896-4364-9d2c-\
+9b6c98366775"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Task : (a)  ",
+ StyleBox["Probability  using Census method", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->RGBColor[0.5, 0, 0.5]]
+}], "Subchapter",
+ CellChangeTimes->{
+  3.74515775144685*^9, 3.7451578234359455`*^9, {3.7452991580485363`*^9, 
+   3.7452991644396057`*^9}, {3.7452991968968067`*^9, 3.7452992493759604`*^9}, 
+   3.7454971722207394`*^9},ExpressionUUID->"2760ab7a-2fed-4ae4-a63f-\
+890119ad5062"],
+
+Cell[CellGroupData[{
+
+Cell["Summery", "Section",ExpressionUUID->"28ab532a-4f99-4328-b494-a8a51a0e3e70"],
+
+Cell[CellGroupData[{
+
+Cell["Task", "Subsection",ExpressionUUID->"4df8543c-22f8-401d-8973-c66d5fa62864"],
+
+Cell[TextData[{
+ "Assume that you play a variant of a poker game with ",
+ StyleBox["five cards",
+  FontWeight->"Bold"],
+ " that is using a subset of two ordinary deck   of cards. The subset \
+considered is cards valued ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"9", ",", "10", ",", "J", ",", "Q", ",", "K", ",", "A"}], 
+   TraditionalForm]],ExpressionUUID->"e3c59ccd-5fc4-4a5d-a550-df6ec6faaab6"],
+ " from the two decks, in total 48 cards.\nCalculate the exact probability of \
+the following hands using the  ",
+ StyleBox["census method",
+  FontWeight->"Bold"],
+ ".\n",
+ StyleBox["\[FilledCircle] ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["one pair", "Item",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["\n\[FilledCircle] two pairs\n\[FilledCircle] three of a kind\n\
+\[FilledCircle] four of a kind\n\[FilledCircle] five of a kind\n\
+\[FilledCircle] full hand\n\[FilledCircle] straight\n\[FilledCircle] flush\n\
+\[FilledCircle] straight flush\n\[FilledCircle] nothing",
+  FontColor->RGBColor[0, 0, 1]],
+ "\nIf a given hand contains different valued hands only one (the highest \
+rank) is considered.\n Example :\n h={\[ClubSuit]10,\[HeartSuit]10,\
+\[DiamondSuit]K,\[DiamondSuit]K,\[SpadeSuit]K}\n \
+\[Implies]onepairQ(h)=false,twopairsQ(h)=false,threeofakindQ(h)=false,\
+fullhandQ(h)=true\n Notice that the different sets of hands are supposed to \
+be ",
+ StyleBox["pairwise disjoint",
+  FontWeight->"Bold"],
+ ", e.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      StyleBox[
+       RowBox[{"three", " ", "of", " ", 
+        StyleBox["a",
+         FontSlant->"Plain"], " ", "kind"}], "Text"], "}"}], 
+     "\[Intersection]", 
+     RowBox[{"{", 
+      RowBox[{"full", " ", "house"}], "}"}]}], "=", "\[EmptySet]"}], 
+   TraditionalForm]],ExpressionUUID->"665fb10f-0ae9-4483-8f72-59fb3168eb33"],
+ ". Check all different possibilities. This is an easy way of discover \
+programming errors.\nCompare and discuss the probabilities of the above \
+variant poker game to the probabilities for a normal poker game with a \
+standard 52 card deck.\n"
+}], "Text",
+ CellChangeTimes->{{3.745157890085682*^9, 3.7451579701364465`*^9}, {
+  3.7451580449107056`*^9, 3.7451580839998217`*^9}, {3.7451581211845016`*^9, 
+  3.7451581302287517`*^9}, {3.745158196429615*^9, 3.7451584109106045`*^9}, {
+  3.74515882858707*^9, 3.7451588302595577`*^9}, {3.7452993970023966`*^9, 
+  3.7452994157547326`*^9}, {3.7452994590086775`*^9, 3.7452994673001747`*^9}, {
+  3.745302436182911*^9, 
+  3.745302481023596*^9}},ExpressionUUID->"73a11f4c-c38d-499a-a813-\
+a3467d0d77bd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Result", "Subsection",ExpressionUUID->"39a0ef6c-6a2c-4081-9062-84513a76c571"],
+
+Cell[TextData[{
+ StyleBox["Total of hands (2 decks/48 cards)  = 1712304 combinations of 5 \
+cards\nTotal of hands (1 deck/52 cards) = ",
+  FontSize->18],
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    TemplateBox[{"52","5"},
+     "Binomial"],
+    FontSize->18], TraditionalForm]],ExpressionUUID->
+  "2e571cea-436f-42d2-98fa-f3e152269c63"],
+ StyleBox[" = 2598960 combinations of 5 cards",
+  FontSize->18],
+ StyleBox["  \n\n             ",
+  FontSize->24],
+ Cell[BoxData[GridBox[{
+    {
+     StyleBox["Hand",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     StyleBox[
+      RowBox[{"        ", 
+       RowBox[{"Probability", "\[IndentingNewLine]", 
+        RowBox[{"(", 
+         RowBox[{"2", " ", 
+          RowBox[{"decks", "/", "48"}], " ", "cards"}], ")"}]}]}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     StyleBox[
+      RowBox[{"       ", 
+       RowBox[{"Probability", "\[IndentingNewLine]", 
+        RowBox[{"(", 
+         RowBox[{"1", " ", 
+          RowBox[{"deck", "/", "52"}], " ", "cards"}], ")"}]}]}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0.6, 0.4, 0.2]]},
+    {
+     StyleBox[
+      RowBox[{"One", " ", "pair"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"50.121", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"42.257", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Two", " ", "pairs"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"21.949", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"4.754", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Three", " ", "of", " ", "a", " ", "kind"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"12.558", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"2.113", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Four", " ", "of", " ", "a", " ", "kind"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.981", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.024", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Five", " ", "of", " ", "a", " ", "kind"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.019", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Full", " ", "Hand"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"2.747", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.144", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Straight",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"3.812", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.392", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Flush",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.170", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.196", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Straight", " ", "Flush"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.015", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.0015", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Nothing",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"7.624", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"50.118", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Total",
+      FontWeight->"Bold",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox[
+      RowBox[{"99.998", "%"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox[
+      RowBox[{"99.999", "%"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[1, 0, 0]]}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}}]],ExpressionUUID->
+  "8669bc07-273c-49d9-8011-88de8611d634"]
+}], "Text",
+ CellChangeTimes->{
+  3.7451586954415655`*^9, {3.7453216415629883`*^9, 3.74532166403576*^9}, {
+   3.745321703875543*^9, 3.7453217802257967`*^9}, {3.745321954559491*^9, 
+   3.745321973552926*^9}, {3.745322090521209*^9, 3.74532212454091*^9}, {
+   3.7453223991232347`*^9, 3.74532242368985*^9}, {3.7453224623475294`*^9, 
+   3.74532255587037*^9}, {3.745322594716734*^9, 3.745322594716734*^9}, {
+   3.7453227887443695`*^9, 3.745322827278465*^9}, {3.745322873243414*^9, 
+   3.7453228831356783`*^9}, {3.7453229164593835`*^9, 
+   3.7453229349909115`*^9}, {3.745322965812423*^9, 3.7453229876184745`*^9}, {
+   3.7453230208816195`*^9, 3.7453230471226325`*^9}, {3.745323109579959*^9, 
+   3.7453231133220377`*^9}, {3.7453231593410707`*^9, 
+   3.7453231840746393`*^9}, {3.745323214744203*^9, 3.7453232538261704`*^9}, {
+   3.745323284978802*^9, 3.745323287329523*^9}, {3.7453233653678694`*^9, 
+   3.7453233747018805`*^9}, {3.7453234814935293`*^9, 3.745323542425147*^9}, {
+   3.745323659079765*^9, 3.745323664784587*^9}, {3.74532378648872*^9, 
+   3.745323790112773*^9}, {3.745390984894634*^9, 3.745390984896633*^9}, {
+   3.7453951414123187`*^9, 3.7453952403555937`*^9}, {3.7453952765369434`*^9, 
+   3.745395298796266*^9}, {3.745395360146063*^9, 3.7453953852834797`*^9}, {
+   3.745395416855771*^9, 3.745395426859843*^9}, {3.7453954881805377`*^9, 
+   3.745395500789352*^9}, {3.7453955314690847`*^9, 3.7453956592597*^9}, {
+   3.7453958126765203`*^9, 3.745395842572527*^9}, {3.745400967939984*^9, 
+   3.7454010277096186`*^9}, 3.745401099436575*^9, {3.7454012567002506`*^9, 
+   3.7454012613688135`*^9}, 3.74541464413894*^9, {3.7454831233203125`*^9, 
+   3.7454831370981503`*^9}, {3.7454831714767723`*^9, 
+   3.745483184858735*^9}},ExpressionUUID->"1bf59983-7c21-4d19-805a-\
+0068e3a1cdc7"],
+
+Cell[TextData[{
+ StyleBox["From the table, we can conclude some notes:",
+  FontSize->18,
+  FontWeight->"Bold"],
+ StyleBox["\n",
+  FontSize->18],
+ StyleBox["1.",
+  FontSize->18,
+  FontWeight->"Bold"],
+ StyleBox[" For 2 decks, the sets of equal cards become more common and more \
+hands become possible (as in five of a kind).\n",
+  FontSize->18],
+ StyleBox["2.",
+  FontSize->18,
+  FontWeight->"Bold"],
+ StyleBox[" The reason of zero probability in five of a kind hand (in normal \
+poker game/ 52 card deck) because we have only 4 suits and its impossible to \
+get 5 cards with the same rank (except of course the case that we have Joker \
+card).\n",
+  FontSize->18],
+ StyleBox["3.",
+  FontSize->18,
+  FontWeight->"Bold"],
+ StyleBox[" Due to extension each rank from 4 to 8, the combination of most \
+of hands (except flush hand case) have increased.\n",
+  FontSize->18],
+ StyleBox["4.",
+  FontSize->18,
+  FontWeight->"Bold"],
+ StyleBox[" The reason of low probability of flush hand in the 2 decks case \
+is because we use only 6 cards out of 13 which decreases the chance of \
+occurring hands of non-sequential ranks.",
+  FontSize->18]
+}], "Text",
+ CellChangeTimes->{{3.745399198378237*^9, 3.745399284738312*^9}, {
+   3.7453993185297318`*^9, 3.7453993845874195`*^9}, {3.745399430138547*^9, 
+   3.7453994712987485`*^9}, {3.7453995166724415`*^9, 3.745399552330843*^9}, {
+   3.7453995865388145`*^9, 3.7453996139946804`*^9}, {3.745399664083873*^9, 
+   3.745399713483161*^9}, {3.7453999278193073`*^9, 3.7453999526674376`*^9}, {
+   3.745399996440935*^9, 3.745400209889127*^9}, {3.7454002847557244`*^9, 
+   3.7454003352676587`*^9}, 3.7454003670734167`*^9, {3.7454017451430197`*^9, 
+   3.7454017503844113`*^9}, {3.7454019046460047`*^9, 3.74540190632849*^9}, {
+   3.74541363302462*^9, 3.745413633976327*^9}, {3.7454137237287474`*^9, 
+   3.745413724841408*^9}, {3.745413814376891*^9, 3.7454138348396025`*^9}, {
+   3.7454828168107805`*^9, 3.745482817474579*^9}, {3.745482858674141*^9, 
+   3.7454828600497293`*^9}, {3.7454828930477767`*^9, 
+   3.7454828979623404`*^9}},ExpressionUUID->"099547d9-27d6-4bae-89be-\
+e7ecb17e4adb"],
+
+Cell["", "Text",
+ CellChangeTimes->{3.745158702103536*^9, 
+  3.745401917030199*^9},ExpressionUUID->"6dc335f4-7b1d-41d4-a2bd-\
+24cc570aff2f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Probability using census method",
+ FontWeight->"Plain",
+ FontColor->GrayLevel[0]]], "Section",
+ CellChangeTimes->{3.7451587257123528`*^9, 3.745301947050701*^9, 
+  3.745306184464883*^9},ExpressionUUID->"6943093f-8a76-4b29-9b2d-\
+76d8c3875b28"],
+
+Cell[TextData[{
+ "The Model \n\n",
+ StyleBox["This section shows the definitions of each hand (5-card) that can \
+be made from 2 decks poker game (24 cards for each deck)\n",
+  FontSize->14,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n",
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\[FilledCircle] ",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["one pair\n", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->18,
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, two cards are of the same rank (regardless of the \
+suit type) while the other three cards all having different ranks from each \
+other and from that of the pair. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["A, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["A", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["9, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->18,
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["\n",
+  FontFamily->"Times New Roman"],
+ StyleBox["\[FilledCircle] two pairs\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, two pairs of two cards are of the same rank (the \
+ranks of each pair are different in rank, to avoid a ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["four of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox[" case). Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Q", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Q", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["9, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] three of a kind\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, three cards are all of the same rank and other two \
+are each of different ranks from the three cards and each other. Example: {", 
+  "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["J, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["J", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["J", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["9, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] four of a kind\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, four cards are all of the same rank while the fifth \
+card has different rank from the four cards. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["A, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["A", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["A", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["A, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] five of a kind\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, five cards are all of the same rank . Example: {", 
+  "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["10, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["10, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] full hand\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["T",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["his hand consists of one pair and a three of a kind of a different \
+rank than the pair. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["A, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["A", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["K, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] straight\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, all five cards are sequential in rank but are not \
+all of the same suit. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["9, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[DiamondSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["J", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[SpadeSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["Q, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[HeartSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] flush\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, all five cards are of the same suit but not all \
+sequential in rank. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["A", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["9", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["K", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["10", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] straight flush\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["In this hand, all five cards are of the same suit and are \
+sequential in rank. Example: {", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["9, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["10, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["J,  ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["Q, ", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\[ClubSuit]", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["K}", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\n\[FilledCircle] nothing",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ "\n",
+ StyleBox["In this hand, each card is of a different rank than any other card \
+and not all five are of the same suit or sequential in rank (i.e none of the \
+previous hands has occurred)", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ "\n\n"
+}], "Subsection",
+ CellChangeTimes->{{3.7451587810565243`*^9, 3.745158786711804*^9}, {
+   3.7453062323794265`*^9, 3.7453062353155284`*^9}, {3.7453064396582603`*^9, 
+   3.7453064719904995`*^9}, {3.7453065174647694`*^9, 3.745306583695781*^9}, 
+   3.745306668962039*^9, 3.745306722294938*^9, 3.745306762835699*^9, {
+   3.745306825784711*^9, 3.7453068474251785`*^9}, {3.745306938968542*^9, 
+   3.745306952093582*^9}, {3.7453069960223207`*^9, 3.745307007110973*^9}, {
+   3.745307048302538*^9, 3.7453071036702504`*^9}, 3.7453071418240004`*^9, {
+   3.7453072713121986`*^9, 3.7453072978391905`*^9}, {3.7453073449859548`*^9, 
+   3.7453073749739046`*^9}, 3.745307447307067*^9, {3.745307485904413*^9, 
+   3.7453074871490393`*^9}, {3.745307518919445*^9, 3.745307621070606*^9}, {
+   3.745307656792822*^9, 3.745307665387227*^9}, {3.745307781801092*^9, 
+   3.7453078229836626`*^9}, {3.7453078871153083`*^9, 3.745307921715863*^9}, {
+   3.7453085885430937`*^9, 3.7453086270744624`*^9}, {3.7453086611361866`*^9, 
+   3.7453086648670616`*^9}, {3.745308763259119*^9, 3.745308779503216*^9}, {
+   3.7453089614063005`*^9, 3.745308983011777*^9}, {3.7453090164616795`*^9, 
+   3.745309155456726*^9}, 3.745309188329802*^9, {3.745309358375485*^9, 
+   3.7453094249123993`*^9}, {3.7453094753911624`*^9, 
+   3.7453094814703283`*^9}, {3.745309550374527*^9, 3.7453096595270977`*^9}, {
+   3.745309695051375*^9, 3.7453096983013926`*^9}, {3.7453097838662806`*^9, 
+   3.745309800154364*^9}, {3.7453098338411937`*^9, 3.745309887576974*^9}, 
+   3.7453099276018877`*^9, {3.745309962002514*^9, 3.7453099776787815`*^9}, {
+   3.7453101080984087`*^9, 3.7453101672375746`*^9}, 3.7453102146712513`*^9, {
+   3.7453102655548935`*^9, 3.745310295391884*^9}, {3.7453103385328617`*^9, 
+   3.745310366160544*^9}, {3.745310403486275*^9, 3.74531044935843*^9}, {
+   3.7453104861463223`*^9, 3.745310490248083*^9}, {3.7453105320294824`*^9, 
+   3.7453105322184267`*^9}, {3.7453105677497015`*^9, 
+   3.7453105929910817`*^9}, {3.745310675936039*^9, 3.7453106780084133`*^9}, {
+   3.7453107317561913`*^9, 3.7453107936795177`*^9}, {3.7453109372501755`*^9, 
+   3.7453109387707167`*^9}, {3.745311003639371*^9, 3.745311017580164*^9}, {
+   3.745311060838103*^9, 3.745311094252014*^9}, 3.7453111615117197`*^9, {
+   3.745311277275773*^9, 3.7453112896255555`*^9}, 3.745311387323061*^9, {
+   3.7453114379447784`*^9, 3.7453115041767883`*^9}, {3.745321609306161*^9, 
+   3.7453216152600803`*^9}, {3.745497259913479*^9, 
+   3.7454972603353004`*^9}},ExpressionUUID->"7e65a304-4725-4568-8fa8-\
+1b4ca87c4741"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Code", "Section",ExpressionUUID->"eb232638-2837-4382-9654-616c94d28459"],
+
+Cell[TextData[StyleBox["1. Two decks/48 cards code",
+ FontSize->24,
+ FontWeight->"Bold",
+ FontColor->RGBColor[1, 0, 1]]], "Text",
+ CellChangeTimes->{{3.7453911166826763`*^9, 3.7453911464827867`*^9}, {
+  3.745391221906709*^9, 
+  3.745391226490864*^9}},ExpressionUUID->"ce8eeb57-dacc-4a6f-8395-\
+825f3d373faa"],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7453120167652054`*^9, 3.7453120406760893`*^9}},
+ CellLabel->
+  "In[359]:=",ExpressionUUID->"4480ca3d-fd05-465d-a3ad-23a0758b1517"],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" Total hands in 2 decks (24 cards each)",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{{3.7453120857388997`*^9, 3.7453121134255395`*^9}, {
+  3.745312197053791*^9, 3.7453121982427034`*^9}, {3.7453122774216413`*^9, 
+  3.7453122840114007`*^9}, {3.745312338094131*^9, 3.7453123428511343`*^9}, {
+  3.7454975921562724`*^9, 
+  3.7454975928494897`*^9}},ExpressionUUID->"b9b9d0a8-6835-4c65-afd7-\
+199b488e7f7f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "6", " ", "cards", " ", 
+    RowBox[{"deck", "/", "total"}], " ", "24", " ", "cards"}], " ", "**)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"onedeck", "=", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"spades", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"clubs", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"hearts", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"diamonds", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}]}], "]"}]}], 
+    ";"}], "  ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"twodecks", " ", "=", " ", 
+     RowBox[{"Join", "[", 
+      RowBox[{"onedeck", ",", " ", "onedeck"}], "]"}]}], ";"}], "  ", 
+   RowBox[{"(*", 
+    RowBox[{"*", " ", "2", " ", 
+     RowBox[{"decks", "/", "total"}], " ", "48", " ", "cards"}], " ", "**)"}],
+    "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rankQ", "[", 
+      RowBox[{"card1_", ",", " ", "card2_"}], "]"}], ":=", " ", 
+     RowBox[{
+      RowBox[{"card1", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "<=", 
+      RowBox[{"card2", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rankSort", "[", "hand_", "]"}], " ", ":=", " ", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"hand", ",", " ", "rankQ"}], "]"}]}], " ", "\n", 
+   RowBox[{
+    RowBox[{"hands", " ", "=", " ", 
+     RowBox[{"rankSort", "/@", 
+      RowBox[{"Subsets", "[", 
+       RowBox[{"twodecks", ",", " ", 
+        RowBox[{"{", "5", "}"}]}], "]"}]}]}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"totalhands", "=", 
+    RowBox[{"Length", "[", "hands", "]"}], " "}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQfcPl6J65z187Fpw4uh9E5zy6dBVEHzmtfx1Eb1Px
+fgiidZ5mPwLRjF/uss8Dyad5cIHod9I7RUA0k4+LGIh2UPeVBdE5K1dqgmi7
+5Z91QXRwWrw1iN62JtYBRLffvOgGoue0PfAF0QcFdQJAdBjLlCgQLfI4LAZE
+F810yAbRbNMNcsDqXB/4zwfSu87eDATRPR9NhRcAadnL7WDa4NMfdxD9bwVP
+KIi++3ltDYgWyPBrANGxwVlnQHSDufpZEM0gd/0HiK5YLPoLRM9xjopbCKRZ
+7rOkg+iAf1ezQPSDWMscEA0Ab6qxHA==
+  "],
+ CellLabel->"In[1]:=",ExpressionUUID->"36b94464-b102-4ef9-98d0-85f5bb1fd666"],
+
+Cell[BoxData["1712304"], "Output",
+ CellChangeTimes->{3.7453126090784388`*^9, 3.7453128915661335`*^9, 
+  3.7453135803187056`*^9, 3.745313675692534*^9, 3.745313736253009*^9, 
+  3.7453155708369703`*^9, 3.74531667241641*^9, 3.745317071713044*^9, 
+  3.7453175866344776`*^9, 3.745317973860808*^9, 3.7453183607828865`*^9, 
+  3.7453189615195556`*^9, 3.745319486654917*^9, 3.745320620266827*^9, 
+  3.745322729289978*^9, 3.745413178471305*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"9cd10572-d7c7-4ea1-ab11-27933d30d258"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Straight flush",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149313979435`*^9, 3.7453150521337557`*^9, 3.7453151641012325`*^9, {
+   3.7453160410594687`*^9, 3.745316054231331*^9}, 
+   3.745316256288333*^9},ExpressionUUID->"e7a42ef1-c44c-4c98-9a7f-\
+c6386ccd972a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sameSuit", "[", 
+    RowBox[{"{", 
+     RowBox[{"_spades", ".."}], "}"}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sameSuit", "[", 
+    RowBox[{"{", 
+     RowBox[{"_clubs", ".."}], "}"}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sameSuit", "[", 
+    RowBox[{"{", 
+     RowBox[{"_hearts", ".."}], "}"}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sameSuit", "[", 
+    RowBox[{"{", 
+     RowBox[{"_diamonds", ".."}], "}"}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sameSuit", "[", "_", "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"straightflush", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"sameSuit", "[", "hand", "]"}], ")"}], "&&", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"values", "=", 
+       RowBox[{"First", "/@", "hand"}]}], "}"}], ",", " ", 
+     RowBox[{
+      RowBox[{"values", "-", 
+       RowBox[{"values", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "\[Equal]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "2", ",", "3", ",", "4"}], "}"}]}]}], 
+    "]"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"straightflushhands", "=", 
+   RowBox[{"Count", "[", 
+    RowBox[{"hands", ",", " ", 
+     RowBox[{"_", "?", 
+      RowBox[{"(", "straightflush", ")"}]}]}], "]"}]}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"straightflushhands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100", " "}]}], "Input",
+ CellChangeTimes->{{3.745315619622528*^9, 3.745315621965384*^9}, {
+   3.745316323304279*^9, 3.745316366145297*^9}, 3.745316879531932*^9, {
+   3.7453169185016375`*^9, 3.745316920600705*^9}, {3.745318181337957*^9, 
+   3.7453181854407444`*^9}, {3.7453199174317303`*^9, 3.7453199313445053`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"fe349015-5b3b-48cd-8d74-97ef7946b158"],
+
+Cell[BoxData["256"], "Output",
+ CellChangeTimes->{3.745316463065833*^9, 3.7453166900090313`*^9, 
+  3.745316901892014*^9, 3.745317087345934*^9, 3.745317605353302*^9, 
+  3.745318015774584*^9, 3.745318378285483*^9, 3.745318969284372*^9, 
+  3.7453194951555414`*^9, 3.7453206276034718`*^9, 3.7453227373067923`*^9, 
+  3.7454131978053703`*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"8b25e5c6-3572-4ae9-97a6-9bea4119c09b"],
+
+Cell[BoxData["0.014950616245713378`"], "Output",
+ CellChangeTimes->{3.745316463065833*^9, 3.7453166900090313`*^9, 
+  3.745316901892014*^9, 3.745317087345934*^9, 3.745317605353302*^9, 
+  3.745318015774584*^9, 3.745318378285483*^9, 3.745318969284372*^9, 
+  3.7453194951555414`*^9, 3.7453206276034718`*^9, 3.7453227373067923`*^9, 
+  3.745413197810359*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"0a58c0e1-b77a-45df-b06b-5196ef1a138c"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Straight",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149466144133`*^9, 3.7453150706569233`*^9, 3.7453151673111534`*^9, {
+   3.7453160610412617`*^9, 3.745316062428089*^9}, 
+   3.7453162597760963`*^9},ExpressionUUID->"11c03b6c-ad5b-4f4a-8dd0-\
+708658c21186"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"straight", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"sameSuit", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"values", "=", 
+       RowBox[{"First", "/@", "hand"}]}], "}"}], ",", " ", 
+     RowBox[{
+      RowBox[{"values", "-", 
+       RowBox[{"values", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "\[Equal]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "2", ",", "3", ",", "4"}], "}"}]}]}], 
+    "]"}]}]}], "\n", 
+ RowBox[{"straighthands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "straight", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"straighthands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453172545850744`*^9, 3.745317256072117*^9}, 
+   3.7453199366497498`*^9},
+ CellLabel->"In[15]:=",ExpressionUUID->"ab01f1b1-78e1-4bad-b637-5cd84c631005"],
+
+Cell[BoxData["65280"], "Output",
+ CellChangeTimes->{3.7453176218154297`*^9, 3.745318052814086*^9, 
+  3.745318421050064*^9, 3.7453189879398737`*^9, 3.7453195143168983`*^9, 
+  3.7453206454196477`*^9, 3.745322755902397*^9, 3.7454132284259515`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"21fdcf07-620f-49c1-abd3-583158062d15"],
+
+Cell[BoxData["3.8124071426569115`"], "Output",
+ CellChangeTimes->{3.7453176218154297`*^9, 3.745318052814086*^9, 
+  3.745318421050064*^9, 3.7453189879398737`*^9, 3.7453195143168983`*^9, 
+  3.7453206454196477`*^9, 3.745322755902397*^9, 3.7454132284299498`*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"3fbc6327-3c64-484b-b75d-50806d8b0ab5"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Flush",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149551497993`*^9, 3.74531508277273*^9, 3.7453151757650604`*^9, {
+   3.7453160747614236`*^9, 3.74531609001968*^9}, 3.7453161546912837`*^9, 
+   3.7453162627582674`*^9},ExpressionUUID->"e072687c-527e-4dcd-863b-\
+fd162eab9ef8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"flush", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"sameSuit", "[", "hand", "]"}], ")"}], "&&", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"values", "=", 
+       RowBox[{"First", "/@", "hand"}]}], "}"}], ",", " ", 
+     RowBox[{
+      RowBox[{"values", "-", 
+       RowBox[{"values", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "\[NotEqual]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "2", ",", "3", ",", "4"}], "}"}]}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"flushhands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "flush", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"flushhands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453172976865964`*^9, 3.7453172983124027`*^9}, {
+   3.74531891910166*^9, 3.745318919945684*^9}, {3.745319173079314*^9, 
+   3.74531917485133*^9}, 3.745319390562395*^9, 3.7453199418407145`*^9, {
+   3.745320520303667*^9, 3.745320549854684*^9}, {3.745320741236453*^9, 
+   3.7453207429934764`*^9}, {3.745413239102675*^9, 3.7454132400103936`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"584aa2f8-deed-4e48-ac15-c14b1dd0171e"],
+
+Cell[BoxData["2912"], "Output",
+ CellChangeTimes->{3.7453176280955114`*^9, 3.7453180662527456`*^9, 
+  3.7453184343840246`*^9, 3.745318993682785*^9, 3.7453195143988743`*^9, 
+  3.7453206509967537`*^9, 3.7453227619763813`*^9, 3.7454132543639803`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"e3482ce9-01ba-46b3-8f96-5005ee723ce5"],
+
+Cell[BoxData["0.17006325979498968`"], "Output",
+ CellChangeTimes->{3.7453176280955114`*^9, 3.7453180662527456`*^9, 
+  3.7453184343840246`*^9, 3.745318993682785*^9, 3.7453195143988743`*^9, 
+  3.7453206509967537`*^9, 3.7453227619763813`*^9, 3.745413254367979*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"50ed88d2-45dd-4a11-9ca9-8ec77f063955"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Five of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149637201056`*^9, 3.745315095383051*^9, 3.745315178893999*^9, {
+   3.7453161557213063`*^9, 3.745316177467798*^9}, 
+   3.7453162672563267`*^9},ExpressionUUID->"fa1a7ffe-c173-441c-bdc7-\
+85d1f2de5484"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fiveQ", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"_", "[", "x_", "]"}], ".."}], "}"}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fiveQ", "[", "_", "]"}], ":=", "False"}], "\[IndentingNewLine]", 
+ RowBox[{"fivehands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "fiveQ", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"fivehands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.745317318640391*^9, 3.7453173192701902`*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"6b8a9b4d-36bb-4aee-8d68-cb419cef2d9e"],
+
+Cell[BoxData["336"], "Output",
+ CellChangeTimes->{3.7453176305204*^9, 3.7453180716884346`*^9, 
+  3.7453184394618645`*^9, 3.745318995785652*^9, 3.745319517323845*^9, 
+  3.745320653255602*^9, 3.7453227642572203`*^9, 3.74541342543441*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"b0791c47-8d39-411d-a764-1d82916d538a"],
+
+Cell[BoxData["0.01962268382249881`"], "Output",
+ CellChangeTimes->{3.7453176305204*^9, 3.7453180716884346`*^9, 
+  3.7453184394618645`*^9, 3.745318995785652*^9, 3.745319517323845*^9, 
+  3.745320653255602*^9, 3.7453227642572203`*^9, 3.74541342543841*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"4910cd61-53e5-499b-93c0-2944cd58d035"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Four of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149713201027`*^9, 3.7453151052433434`*^9, 3.745315182541127*^9, {
+   3.745316105993518*^9, 3.7453161073193903`*^9}, 3.74531619644314*^9, 
+   3.745316271688217*^9},ExpressionUUID->"c384814b-35f3-45da-a892-\
+89d10bc8b08d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fourQ", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"_", "[", "x_", "]"}], ".."}], "}"}], "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fourQ", "[", 
+    RowBox[{"{", 
+     RowBox[{"___", ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", "___"}], "}"}], "]"}], ":=", 
+   "True"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fourQ", "[", "_", "]"}], "=", "False"}], ";"}], "\n", 
+ RowBox[{"fourhands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "fourQ", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"fourhands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453173350417337`*^9, 3.7453173356855373`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"caaafb12-b87f-4c25-a5e2-9c96222b70b2"],
+
+Cell[BoxData["16800"], "Output",
+ CellChangeTimes->{3.7453176366302147`*^9, 3.7453180842287908`*^9, 
+  3.7453184531881022`*^9, 3.7453190017785187`*^9, 3.7453195233817215`*^9, 
+  3.7453206592378225`*^9, 3.745322770026329*^9, 3.7454134362690816`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"75b398f1-fb9d-4eb4-9337-00f34ae07143"],
+
+Cell[BoxData["0.9811341911249404`"], "Output",
+ CellChangeTimes->{3.7453176366302147`*^9, 3.7453180842287908`*^9, 
+  3.7453184531881022`*^9, 3.7453190017785187`*^9, 3.7453195233817215`*^9, 
+  3.7453206592378225`*^9, 3.745322770026329*^9, 3.7454134362750826`*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"ac8dd21d-4a4d-4494-82ea-9f87c4b1ba1b"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Full hand ",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453149800944695`*^9, 3.745315115468342*^9, 3.7453151857250757`*^9, {
+   3.7453161156895447`*^9, 3.7453161175057306`*^9}, 
+   3.7453162064399767`*^9},ExpressionUUID->"df813be7-8a6a-4ac3-a722-\
+40778df59132"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fullhand", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "y_", "]"}], ",", 
+       RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fullhand", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "y_", "]"}], ",", 
+       RowBox[{"_", "[", "y_", "]"}], ",", 
+       RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fullhand", "[", "_", "]"}], "=", "False"}], ";"}], "\n", 
+ RowBox[{"fullhandhands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "fullhand", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"fullhandhands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453173512580824`*^9, 3.7453173518528953`*^9}, {
+   3.745319196070628*^9, 3.7453192558219967`*^9}, 3.7453195229088664`*^9},
+ CellLabel->"In[30]:=",ExpressionUUID->"74a66c47-ea39-4018-86c9-b72cd4888ec5"],
+
+Cell[BoxData["47040"], "Output",
+ CellChangeTimes->{3.745317639908127*^9, 3.74531809073322*^9, 
+  3.7453184607350025`*^9, 3.7453190047874126`*^9, 3.745319526347575*^9, 
+  3.745320662484668*^9, 3.745322773394104*^9, 3.745413445387288*^9},
+ CellLabel->"Out[33]=",ExpressionUUID->"6909f1c9-fd43-478e-8221-25c1754bdf2a"],
+
+Cell[BoxData["2.7471757351498334`"], "Output",
+ CellChangeTimes->{3.745317639908127*^9, 3.74531809073322*^9, 
+  3.7453184607350025`*^9, 3.7453190047874126`*^9, 3.745319526347575*^9, 
+  3.745320662484668*^9, 3.745322773394104*^9, 3.745413445396284*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"03a164dc-dae3-46bd-ae07-9db9738f622f"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Three of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.745314986197645*^9, 3.7453151260374374`*^9, 3.745315190390093*^9, {
+   3.7453162108094797`*^9, 3.745316213180328*^9}, 
+   3.745316274911143*^9},ExpressionUUID->"3f044676-39ec-4de3-95fe-\
+a54c4291a1c7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"threeQ", "[", 
+    RowBox[{"{", 
+     RowBox[{"___", ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", "___"}], "}"}], "]"}], ":=", 
+   "True"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"threeQ", "[", "_", "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"three2", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"fullhand", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"fourQ", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"fiveQ", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"threeQ", "[", "hand", "]"}], ")"}]}]}], "\n", 
+ RowBox[{"threehands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "three2", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"threehands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453173689288874`*^9, 3.745317369574998*^9}, 
+   3.7453192809776287`*^9},
+ CellLabel->"In[35]:=",ExpressionUUID->"ed72ab8c-ef65-436d-9a9f-e4a5e652b478"],
+
+Cell[BoxData["215040"], "Output",
+ CellChangeTimes->{3.7453176598848763`*^9, 3.7453181270017347`*^9, 
+  3.745318504282521*^9, 3.745319024629442*^9, 3.7453195463087835`*^9, 
+  3.7453206837984314`*^9, 3.745322792912245*^9, 3.745413473391674*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"6f87f35a-f0ef-4bc9-a50e-99a493c5a64d"],
+
+Cell[BoxData["12.558517646399237`"], "Output",
+ CellChangeTimes->{3.7453176598848763`*^9, 3.7453181270017347`*^9, 
+  3.745318504282521*^9, 3.745319024629442*^9, 3.7453195463087835`*^9, 
+  3.7453206837984314`*^9, 3.745322792912245*^9, 3.7454134734016733`*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"4e9a83ad-0772-427e-99a7-67feefed870a"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Two pairs",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.745314995021962*^9, 3.7453151402678747`*^9, 3.745315193318057*^9, {
+   3.745316227897171*^9, 3.745316230038164*^9}, 
+   3.7453162767450843`*^9},ExpressionUUID->"0947c5b5-a803-4e73-8e60-\
+45326ea8362f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"twopairs", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "z_", "]"}], ",", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"twopairs", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", 
+       RowBox[{"_", "[", "z_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"twopairs", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", 
+       RowBox[{"_", "[", "z_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "True"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"twopairs", "[", "_", "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"twopairs2", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"fullhand", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"threeQ", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"sameSuit", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"twopairs", "[", "hand", "]"}], ")"}]}]}], "\n", 
+ RowBox[{"twopairshands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "twopairs2", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"twopairshands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453173879036036`*^9, 3.7453173886636987`*^9}, 
+   3.745319296075761*^9, 3.745319948080613*^9, {3.745320225655903*^9, 
+   3.7453202831949673`*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"2caf545c-cf85-4212-9b3b-ea31a3b508e8"],
+
+Cell[BoxData["375840"], "Output",
+ CellChangeTimes->{3.745317677914976*^9, 3.7453181615868196`*^9, 
+  3.745318546799471*^9, 3.7453190424482517`*^9, 3.745319564916074*^9, 
+  3.745320702110865*^9, 3.745322812060993*^9, 3.7454135025757055`*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"edacd5bc-5204-4ad6-8a60-0cdf2403d098"],
+
+Cell[BoxData["21.949373475737953`"], "Output",
+ CellChangeTimes->{3.745317677914976*^9, 3.7453181615868196`*^9, 
+  3.745318546799471*^9, 3.7453190424482517`*^9, 3.745319564916074*^9, 
+  3.745320702110865*^9, 3.745322812060993*^9, 3.745413502579704*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"fd9ad3bb-3588-4e6c-b005-f82ca2647144"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["One pair", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.745315000718174*^9, 3.745315149322569*^9, 3.745315197916793*^9, {
+   3.7453162462247915`*^9, 3.745316247582144*^9}, 
+   3.74531627903915*^9},ExpressionUUID->"9cbaaa8d-a9d2-4637-a481-\
+787714db77d4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", 
+    RowBox[{"{", 
+     RowBox[{"___", ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+      RowBox[{"_", "[", "x_", "]"}], ",", " ", "___"}], "}"}], "]"}], ":=", 
+   "True"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", "_", "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"onepair2", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"sameSuit", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"threeQ", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"twopairs", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"onepair", "[", "hand", "]"}], ")"}]}]}], "\n", 
+ RowBox[{"onepairhands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "onepair2", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"onepairhands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.745317405508128*^9, 3.745317406086214*^9}, 
+   3.7453199511055713`*^9, {3.745320084581103*^9, 3.745320109284388*^9}, {
+   3.745320160628504*^9, 3.7453201901094522`*^9}, 3.745320304489639*^9},
+ CellLabel->"In[47]:=",ExpressionUUID->"633ccf41-e38c-4d2c-ad78-55ae9335b0ed"],
+
+Cell[BoxData["858240"], "Output",
+ CellChangeTimes->{3.745317697157075*^9, 3.7453182065378838`*^9, 
+  3.745318592601961*^9, 3.7453190627691345`*^9, 3.745319586137263*^9, 
+  3.74532072192476*^9, 3.7453228327003136`*^9, 3.745413530560108*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"a6fc65a0-2948-4085-a90f-92d75eaf86a9"],
+
+Cell[BoxData["50.1219409637541`"], "Output",
+ CellChangeTimes->{3.745317697157075*^9, 3.7453182065378838`*^9, 
+  3.745318592601961*^9, 3.7453190627691345`*^9, 3.745319586137263*^9, 
+  3.74532072192476*^9, 3.7453228327003136`*^9, 3.7454135305661063`*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"47bd0133-3883-494a-b594-3b58608539a2"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Nothing",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{3.7453150292394857`*^9, 3.7453151583960505`*^9, 
+  3.7453152014050817`*^9},ExpressionUUID->"0f2f27d9-66a3-4161-8a7d-\
+c5ba6eae8331"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nothing", "[", "hand_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"onepair", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"(", 
+    RowBox[{"!", 
+     RowBox[{"sameSuit", "[", "hand", "]"}]}], ")"}], "&&", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"values", "=", 
+       RowBox[{"First", "/@", "hand"}]}], "}"}], ",", " ", 
+     RowBox[{
+      RowBox[{"values", "-", 
+       RowBox[{"values", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "\[NotEqual]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "2", ",", "3", ",", "4"}], "}"}]}]}], 
+    "]"}]}]}], "\n", 
+ RowBox[{"nothinghands", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "nothing", ")"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"nothinghands", "/", "totalhands"}], "]"}], " ", "*", " ", 
+  "100"}]}], "Input",
+ CellChangeTimes->{{3.7453174183517213`*^9, 3.7453174189118137`*^9}, {
+   3.745319953710703*^9, 3.7453200287796383`*^9}, 3.7453201419292617`*^9},
+ CellLabel->"In[52]:=",ExpressionUUID->"a26b300a-ea0a-4515-bde1-63eee5b54723"],
+
+Cell[BoxData["130560"], "Output",
+ CellChangeTimes->{3.7453177083505955`*^9, 3.745318233331108*^9, 
+  3.745318619368647*^9, 3.745319073962989*^9, 3.745319597222945*^9, 
+  3.7453207318722277`*^9, 3.7453228430480676`*^9, 3.745413549541273*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"fce91fa7-0406-4441-af78-b22310e0428d"],
+
+Cell[BoxData["7.624814285313823`"], "Output",
+ CellChangeTimes->{3.7453177083505955`*^9, 3.745318233331108*^9, 
+  3.745318619368647*^9, 3.745319073962989*^9, 3.745319597222945*^9, 
+  3.7453207318722277`*^9, 3.7453228430480676`*^9, 3.745413549546272*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"89a09c79-4077-4814-b442-8d306fb6af64"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["2. Ordinary  poker 52 cards code (for comparison \
+purpose)",
+ FontSize->24,
+ FontWeight->"Bold",
+ FontColor->RGBColor[1, 0, 1]]], "Text",
+ CellChangeTimes->{{3.7453914355990014`*^9, 
+  3.7453914516517773`*^9}},ExpressionUUID->"ea257c45-f6af-4da1-86be-\
+77dfe4cb0710"],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" Total hands",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{{3.7453929544080315`*^9, 
+  3.745392961844204*^9}},ExpressionUUID->"dd50260c-2b5d-4bb1-b91f-\
+0d752a3296a7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"hands", "=", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"52", ",", "5"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.745391293671032*^9, 3.7453913876661377`*^9}, 
+   3.745391426732261*^9, {3.745391530698908*^9, 3.7453915326817317`*^9}, {
+   3.7453915847801*^9, 3.7453915857480745`*^9}, {3.745392402325385*^9, 
+   3.7453924990133142`*^9}, {3.745392534300969*^9, 3.7453925580726323`*^9}, {
+   3.7453928924519577`*^9, 3.745392917058237*^9}, {3.7453929589238925`*^9, 
+   3.7453929724697795`*^9}, {3.745393478271967*^9, 3.7453934784222293`*^9}, {
+   3.745394989854597*^9, 3.745395030471321*^9}, {3.745401130111148*^9, 
+   3.7454011547375803`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7703fb3c-f08d-4072-8584-518e4e1ba93b"],
+
+Cell[BoxData["2598960"], "Output",
+ CellChangeTimes->{3.7453926163326035`*^9, 3.7453935120567803`*^9, 
+  3.745401161720434*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"bdebd0f0-a7d2-4e58-96d2-d9021bdb694c"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["One pair", "Item",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.745393018546729*^9},ExpressionUUID->"ad0f2a0d-b3fe-4515-b991-\
+0f1860791665"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"13", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "2"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"12", ",", "3"}], "]"}], "*", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"4", ",", "1"}], "]"}], ")"}], "^", 
+   "3"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453926443132687`*^9, 3.7453926443611927`*^9}, 
+   3.745392756498583*^9, {3.7453927917493715`*^9, 3.7453928693419743`*^9}, 
+   3.745395041763199*^9},
+ CellLabel->"In[3]:=",ExpressionUUID->"2d2a5f43-00cf-407d-885a-09e0de0d4f61"],
+
+Cell[BoxData["1098240"], "Output",
+ CellChangeTimes->{3.7453933783827286`*^9, 3.7453935277835674`*^9, 
+  3.745401192269047*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"d20247e5-19df-4b31-abd0-44b87b477079"],
+
+Cell[BoxData["42.25690276110444`"], "Output",
+ CellChangeTimes->{3.7453933783827286`*^9, 3.7453935277835674`*^9, 
+  3.7454011922730455`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"bc21e7e5-b318-40b0-bb86-bdbfa2b31c54"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Two pairs",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.745393125364947*^9},ExpressionUUID->"91f806e9-0d0f-4238-bf24-\
+a2ec8dddea81"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"13", ",", "2"}], "]"}], "*", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"4", ",", "2"}], "]"}], ")"}], "^", "2"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"11", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745392111744322*^9, 3.7453921117927456`*^9}, 
+   3.7453931064421473`*^9, {3.7453935948794327`*^9, 3.745393641406777*^9}, 
+   3.7453950464023857`*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"0799706a-ccca-43fd-aaae-0735f751a769"],
+
+Cell[BoxData["123552"], "Output",
+ CellChangeTimes->{3.7453936802555113`*^9, 3.7454012003815546`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"98f5e1c9-b868-4bd3-b1d9-026941c4eed7"],
+
+Cell[BoxData["4.75390156062425`"], "Output",
+ CellChangeTimes->{3.7453936802555113`*^9, 3.7454012003855534`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"7bb3b61a-c3de-4ada-9094-fcda6487f594"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Three of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453931776806564`*^9},ExpressionUUID->"317291e5-7169-4924-b523-\
+fe3145de4d8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"13", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "3"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"12", ",", "2"}], "]"}], "*", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"4", ",", "1"}], "]"}], ")"}], "^", 
+   "2"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453931514896426`*^9, 3.7453931589104943`*^9}, {
+   3.745393736056102*^9, 3.7453937892706175`*^9}, 
+   3.7453950507052402`*^9},ExpressionUUID->"41e0910c-9933-45f6-9969-\
+4fa8aaa53f3b"],
+
+Cell[BoxData["54912"], "Output",
+ CellChangeTimes->{3.745393796412548*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"4ce07b40-9081-48d3-b3c8-bb0c3e3ca56d"],
+
+Cell[BoxData["2.112845138055222`"], "Output",
+ CellChangeTimes->{3.7453937964155436`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"98d62a65-a213-433a-80aa-7d6273d047d7"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Full hand ",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453932123732786`*^9},ExpressionUUID->"61bc96c1-1f57-4926-88de-\
+8998be02a075"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"13", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "3"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"12", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "2"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453931966742687`*^9, 3.745393198208404*^9}, {
+   3.7453938399360647`*^9, 3.745393870876591*^9}, 
+   3.7453950552254663`*^9},ExpressionUUID->"466e9608-2e6f-4f93-9af2-\
+3de9226e236d"],
+
+Cell[BoxData["3744"], "Output",
+ CellChangeTimes->{3.7453938780151825`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"31ada25e-d8b5-4094-8f35-9ff5df257dc7"],
+
+Cell[BoxData["0.14405762304921968`"], "Output",
+ CellChangeTimes->{3.7453938780186777`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"4654ad3d-a55a-420c-bf79-f0443903188d"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Four of a kind",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453932420005646`*^9},ExpressionUUID->"5c2cc66e-2987-41b1-bf99-\
+8969520f6d11"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"13", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "4"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"12", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745393227441984*^9, 3.74539322856026*^9}, {
+   3.745393925568036*^9, 3.7453939408069544`*^9}, 
+   3.745395059935268*^9},ExpressionUUID->"38432a55-eaf0-4023-9711-\
+e4a4120e55b9"],
+
+Cell[BoxData["624"], "Output",
+ CellChangeTimes->{3.7453939478989353`*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"6b77bb8f-23e7-4af8-b0cb-f0f61fe65a78"],
+
+Cell[BoxData["0.024009603841536616`"], "Output",
+ CellChangeTimes->{3.745393947903432*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"cbdeb7b6-3c2d-4388-9b22-bba33a8dbc95"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Straight flush",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453932660828247`*^9, {3.745394258847621*^9, 
+   3.745394260422229*^9}},ExpressionUUID->"623ea19b-f838-465e-9035-\
+7c54ad2a0462"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"10", "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"4", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745393247217868*^9, 3.7453932534294295`*^9}, {
+   3.7453941087677765`*^9, 3.7453941360225005`*^9}, {3.7453941801423426`*^9, 
+   3.7453941833662467`*^9}, 3.7453942782867804`*^9, {3.745394311231143*^9, 
+   3.7453943121266193`*^9}, 3.7453950642130723`*^9, 
+   3.745482450390333*^9},ExpressionUUID->"b7cbac52-c3d1-4ee8-b90a-\
+57a29d7aff72"],
+
+Cell[BoxData["40"], "Output",
+ CellChangeTimes->{3.745394323627457*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"dae24f08-73e8-4d5d-843d-fddf36f40717"],
+
+Cell[BoxData["0.0015390771693292702`"], "Output",
+ CellChangeTimes->{3.745394323630452*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"04bb131a-01f6-455a-8539-d698e6b541f4"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Straight",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{3.745393294470291*^9, 
+  3.745394351390098*^9},ExpressionUUID->"08561857-630d-4051-8f99-\
+5aa6d9fa4569"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"10", "*", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Binomial", "[", 
+       RowBox[{"4", ",", "1"}], "]"}], ")"}], "^", "5"}]}], "-", "40"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "excluding", " ", "straight", " ", "flushes"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453932773697867`*^9, 3.745393278584447*^9}, {
+   3.7453943723111863`*^9, 3.745394396590851*^9}, {3.745394431718812*^9, 
+   3.745394505382842*^9}, 
+   3.745395068925743*^9},ExpressionUUID->"d5a074f1-5446-4f8a-99fe-\
+2c97d87c6b68"],
+
+Cell[BoxData["10200"], "Output",
+ CellChangeTimes->{3.7453945211910915`*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"7dd43c7a-5004-44b9-ba87-efc50fb52291"],
+
+Cell[BoxData["0.39246467817896385`"], "Output",
+ CellChangeTimes->{3.745394521194586*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"d3b76e5d-c1c6-44e6-9dcc-3f55d390a8fb"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Flush ",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{3.7453933289241056`*^9, 3.745394256053094*^9, 
+  3.745394359227784*^9, 
+  3.7453974329697776`*^9},ExpressionUUID->"7e608980-f3b9-4e6c-a992-\
+049514796e8e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Binomial", "[", 
+     RowBox[{"4", ",", "1"}], "]"}], "*", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"13", ",", "5"}], "]"}]}], "-", "40"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "excluding", " ", "straight", " ", "flushes"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453933157381287`*^9, 3.7453933168161106`*^9}, 
+   3.7453942495213947`*^9, {3.7453946065286417`*^9, 3.745394637422915*^9}, 
+   3.7453946805456023`*^9, 
+   3.7453950741398716`*^9},ExpressionUUID->"eb8e866b-baa0-47ab-8ab3-\
+544081f4f612"],
+
+Cell[BoxData["5108"], "Output",
+ CellChangeTimes->{3.74539470368711*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"e4341220-adc0-4522-b686-83e3ffc8eba9"],
+
+Cell[BoxData["0.1965401545233478`"], "Output",
+ CellChangeTimes->{3.745394703690604*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"ae35f7a2-cb00-4b44-b288-90c32800732b"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle]",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox[" ",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]],
+ StyleBox["Nothing",
+  FontFamily->"Times New Roman",
+  FontSize->24,
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7453933588349543`*^9},ExpressionUUID->"99ca34d2-2009-49e2-a148-\
+7e9a35ec67e1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Binomial", "[", 
+     RowBox[{"13", ",", "5"}], "]"}], "-", "10"}], ")"}], "*", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"4", "^", "5"}], "-", "4"}], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7453933440816317`*^9, 3.745393345287889*^9}, {
+   3.7453947963178225`*^9, 3.74539486604875*^9}, 
+   3.745395078876805*^9},ExpressionUUID->"eb49cb73-d188-4374-ad95-\
+85ed86dd9eaa"],
+
+Cell[BoxData["1302540"], "Output",
+ CellChangeTimes->{3.7453948769093885`*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"e4383ae1-5738-4d8d-84db-d419ac07543f"],
+
+Cell[BoxData["50.11773940345369`"], "Output",
+ CellChangeTimes->{3.7453948769138813`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"301874f6-a871-4517-90ac-63952e3f9473"]
+}, Open  ]],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.7453915967937827`*^9, 3.7453917136502934`*^9}, {
+   3.745391756075799*^9, 3.7453918016115065`*^9}, {3.7453918980206776`*^9, 
+   3.745391911337375*^9}, {3.74539194410573*^9, 3.7453920239803305`*^9}, {
+   3.745392566817357*^9, 3.745392567427945*^9}, {3.7453930383099127`*^9, 
+   3.7453930649797754`*^9}, {3.7453931343192883`*^9, 3.745393136338394*^9}, {
+   3.7453931818071632`*^9, 3.7453932093477993`*^9}, {3.745393239879216*^9, 
+   3.745393263795875*^9}, {3.745393326660512*^9, 3.745393332061798*^9}, 
+   3.7453933634368114`*^9, {3.7453949231098957`*^9, 
+   3.7453949264079294`*^9}},ExpressionUUID->"55324201-413b-4bb6-a71a-\
+5f87240f4c3d"],
+
+Cell[BoxData[""], "Input",
+ CellFrame->{{0, 0}, {0, 3}},
+ CellChangeTimes->{3.7453212106962233`*^9, 
+  3.7453949102585974`*^9},ExpressionUUID->"36114977-cbaa-42b1-b883-\
+ee41db2b491b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Task : (b)  ",
+ StyleBox["Probability  using combinatorial calculus",
+  FontSize->24,
+  FontColor->RGBColor[0.5, 0, 0.5]]
+}], "Subchapter",
+ CellChangeTimes->{
+  3.74515775144685*^9, 3.7451578234359455`*^9, {3.7452991580485363`*^9, 
+   3.7452991644396057`*^9}, {3.7452991968968067`*^9, 3.7452992493759604`*^9}, 
+   3.74529936615271*^9, 3.7452994505442305`*^9, {3.745301375466593*^9, 
+   3.7453013771290913`*^9}, 
+   3.7453122630736804`*^9},ExpressionUUID->"63946cb1-df17-4cfc-b44a-\
+74b6e61bf1fb"],
+
+Cell[CellGroupData[{
+
+Cell["Summery", "Section",ExpressionUUID->"70620f7f-7230-4312-808b-1b09f9bdc265"],
+
+Cell[CellGroupData[{
+
+Cell["Task", "Subsection",ExpressionUUID->"64f7c2f6-92db-4d3c-a617-3822e3320b39"],
+
+Cell[TextData[{
+ "Consider the following ",
+ StyleBox["combinatorial calculus",
+  FontWeight->"Bold"],
+ " of the probability of getting four of a kind. In this case we are dealing \
+with sampling without replacement and without regard to order. First choose \
+one of six possibilities ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[Ellipsis]", ",", "A"}], "}"}], TraditionalForm]],
+  ExpressionUUID->"c2347928-a442-43d2-9a10-691d2d48b276"],
+ " to be the kind value ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]],ExpressionUUID->
+  "b2229d92-ed79-4675-b79c-98bc9e165ce9"],
+ ", then we choose four out of the eight ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]],ExpressionUUID->
+  "ea57fd33-2360-4105-ba9d-ec341f37856c"],
+ " and finally we add a last card from the remaining ",
+ Cell[BoxData[
+  FormBox["40", TraditionalForm]],ExpressionUUID->
+  "981f9464-e766-4be1-9e3d-e2b3dd4200ab"],
+ ". The multiplication principle gives the result.\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["n", "value"], "=", 
+     TemplateBox[{"6","1"},
+      "Binomial"]}], ",", 
+    RowBox[{
+     SubscriptBox["n", 
+      RowBox[{"4", "cards"}]], "=", 
+     TemplateBox[{"8","4"},
+      "Binomial"]}], ",", " ", 
+    RowBox[{
+     SubscriptBox["n", "last"], "=", 
+     TemplateBox[{"40","1"},
+      "Binomial"]}]}], TraditionalForm]], "DisplayFormula",ExpressionUUID->
+  "6bb2cf13-4771-43ee-bec7-cece0a1dee13"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["n", "4"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["n", "value"], 
+      SubscriptBox["n", 
+       RowBox[{"4", "cards"}]], 
+      SubscriptBox["n", "last"]}], "=", 
+     RowBox[{
+      TemplateBox[{"6","1"},
+       "Binomial"], " ", 
+      TemplateBox[{"8","4"},
+       "Binomial"], 
+      TemplateBox[{"40","1"},
+       "Binomial"]}]}]}], TraditionalForm]], "DisplayFormula",ExpressionUUID->
+  "cd40c207-f20e-4987-870a-4ce12c870907"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Therefore]", 
+     SubscriptBox["P", "4"]}], "=", 
+    RowBox[{
+     FractionBox[
+      SubscriptBox["n", "4"], 
+      SubscriptBox["n", "tot"]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        TemplateBox[{"6","1"},
+         "Binomial"], " ", 
+        TemplateBox[{"8","4"},
+         "Binomial"], 
+        TemplateBox[{"40","1"},
+         "Binomial"]}], 
+       TemplateBox[{"48","5"},
+        "Binomial"]], "=", 
+      RowBox[{
+       FractionBox["16800", "1712304"], "\[TildeTilde]", 
+       "0.9811341911249404`"}]}]}]}], TraditionalForm]], "DisplayFormula",
+  ExpressionUUID->"51b0ead8-507d-470f-a01e-969f25b46c15"],
+ "\nNow, ",
+ StyleBox["verify",
+  FontWeight->"Bold"],
+ " this probability by your census in part a).\n\nAdd combinatorial calculus \
+for flush, straight, full house and 3 of a kind to your report. Also ",
+ StyleBox["verify",
+  FontWeight->"Bold"],
+ " these calculations by your census. \nSometimes it is a good idea to divide \
+the sub problem in disjoint parts and add probabilities, e.g. pair of 1\
+\[CloseCurlyQuote]s and pair of 2\[CloseCurlyQuote]s etc.\n"
+}], "Text",
+ CellChangeTimes->{{3.745157890085682*^9, 3.7451579701364465`*^9}, {
+  3.7451580449107056`*^9, 3.7451580839998217`*^9}, {3.7451581211845016`*^9, 
+  3.7451581302287517`*^9}, {3.745158196429615*^9, 3.7451584109106045`*^9}, {
+  3.74515882858707*^9, 3.7451588302595577`*^9}, {3.745299427476197*^9, 
+  3.7452994346580286`*^9}, {3.745301258667855*^9, 3.7453012621398087`*^9}, {
+  3.7454824732784233`*^9, 3.745482531954709*^9}, {3.7454830160996785`*^9, 
+  3.745483016100678*^9}},ExpressionUUID->"9022c9bc-d654-44b6-b187-\
+352bfda4573c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Result", "Subsection",ExpressionUUID->"d780682f-59a1-4bd9-8325-524a5b955ff0"],
+
+Cell[TextData[{
+ StyleBox["Total of hands (2 decks/48 cards) = ",
+  FontSize->18],
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[{"48","5"},
+    "Binomial"], TraditionalForm]],
+  FontSize->18,ExpressionUUID->"2bd8a288-b176-426d-a823-1aedfe001f96"],
+ StyleBox[" = 1712304 combinations of 5 cards",
+  FontSize->18],
+ "\n",
+ StyleBox["\n    ",
+  FontSize->24],
+ Cell[BoxData[GridBox[{
+    {
+     StyleBox["Hand",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     StyleBox[
+      RowBox[{
+       StyleBox["        ",
+        FontColor->RGBColor[0.6, 0.4, 0.2]], 
+       RowBox[{
+        StyleBox["Probability",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[" ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           RowBox[{"decks", "/", "48"}], " ", "cards"}], ")"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[" ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"census", " ", "method"}], ")"}],
+         FontSize->18,
+         FontColor->RGBColor[0.5, 0, 0.5]]}]}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{
+       StyleBox["                      ",
+        FontColor->RGBColor[0.6, 0.4, 0.2]], 
+       RowBox[{
+        StyleBox["Probability",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[" ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["                ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           RowBox[{"deck", "/", "48"}], " ", "cards"}], ")"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[" ",
+         FontColor->RGBColor[1, 0.5, 0.5]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"combinatorial", " ", "calculus"}], ")"}],
+         FontSize->18,
+         FontColor->RGBColor[0.5, 0, 0.5]]}]}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Four", " ", "of", " ", "a", " ", "kind"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.981", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.981", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Flush",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"0.170", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"0.170", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox["Straight",
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"3.812", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"3.812", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Full", " ", "Hand"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"2.747", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"2.747", "%"}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"Three", " ", "of", " ", "a", " ", "kind"}],
+      FontWeight->"Bold",
+      FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]], 
+     StyleBox[
+      RowBox[{"12.558", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{"12.558", "%"}],
+      FontWeight->"Bold"]}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}}]],ExpressionUUID->
+  "46d351b8-df58-4512-8951-e306312e9d12"]
+}], "Text",
+ CellChangeTimes->{
+  3.7451586954415655`*^9, {3.745414156714716*^9, 3.745414185170972*^9}, {
+   3.7454142362752705`*^9, 3.7454143671370535`*^9}, {3.7454144005057993`*^9, 
+   3.745414462531742*^9}, {3.7454145552492547`*^9, 3.7454145884780445`*^9}, {
+   3.7454146761910963`*^9, 3.7454146819503217`*^9}, {3.745414716400732*^9, 
+   3.7454147259098125`*^9}, {3.7454202939841394`*^9, 
+   3.7454203330690374`*^9}, {3.7454204233106213`*^9, 
+   3.7454204605726094`*^9}, {3.7454205112740602`*^9, 3.745420539987562*^9}, {
+   3.745421121969237*^9, 3.7454211256142263`*^9}, 3.7454830712090425`*^9, {
+   3.745483101311957*^9, 
+   3.7454831032773647`*^9}},ExpressionUUID->"6a84e6f8-7ba0-4422-a0b9-\
+5948c75915e2"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox[
+   RowBox[{
+    RowBox[{"From", " ", "above", " ", "table"}], ",", " ", 
+    RowBox[{
+    "we", " ", "can", " ", "see", " ", "that", " ", "all", " ", 
+     "probabilities", " ", "are", " ", "mached", " ", "for", " ", "both", " ", 
+     RowBox[{"methods", "."}]}]}],
+   FontSize->18,
+   FontColor->GrayLevel[0]], TraditionalForm]], "DisplayFormula",
+ CellChangeTimes->{
+  3.745158697103054*^9, {3.7454212015389833`*^9, 3.7454212605715694`*^9}, {
+   3.745483423934564*^9, 
+   3.745483426044927*^9}},ExpressionUUID->"c8a29e81-e308-4553-b402-\
+8d0b4f7957d3"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.745158699310383*^9},ExpressionUUID->"638bbb6c-a727-4efb-965b-\
+15ea1e31358a"],
+
+Cell[BoxData[
+ FormBox["", TraditionalForm]], "DisplayFormula",
+ CellChangeTimes->{
+  3.7451587007109566`*^9},ExpressionUUID->"c5715394-cdcc-4fd9-9584-\
+cea7e2ed7e8d"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.745158702103536*^9},ExpressionUUID->"0f7125cc-9753-432e-9357-\
+75c9d24a783b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Probability  using combinatorial calculus",
+ FontWeight->"Plain",
+ FontColor->GrayLevel[0]]], "Section",
+ CellChangeTimes->{3.7451587257123528`*^9, 
+  3.7453020414531994`*^9},ExpressionUUID->"d9d8e0f1-b4b5-4da8-a845-\
+3dd5aef4797a"],
+
+Cell[TextData[{
+ "The Model\n\n",
+ StyleBox["\[FilledCircle] Total hands",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ "\n",
+ StyleBox["Possible 5 cards selection",
+  FontFamily->"Times New Roman",
+  FontSize->16,
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox[" = ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"48"},
+      {"5"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",ExpressionUUID->"3d4e0dd7-59ac-439f-9fe5-216b026130e4"],
+ StyleBox["\n",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ "\n",
+ StyleBox["\[FilledCircle] Four of a kind\n\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "77b445d7-ecf3-40fc-aeae-03feff0960a9"],
+ StyleBox[" different ranks (four of a kind)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"4"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "3514e5fa-ad1a-4e79-a52f-bc97538ad5b9"],
+ StyleBox[" combinations (four of a kind)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"5"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "25f8cda4-1f95-4ddb-ad09-4500e74c01e2"],
+ StyleBox[" different ranks (fifth card)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "e6d04842-ac63-48de-939c-d34dbe389bb8"],
+ StyleBox[" different cards of rank (fifth card)\nPossible hands selection = ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "84e432e7-d054-4eab-b2f3-abcf704f34b8"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"8"},
+       {"4"}
+      }], ")"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "14dfb437-dbba-419c-90c3-58939f786434"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"5"},
+        {"1"}
+       }], ")"}], " ", 
+     RowBox[{"(", GridBox[{
+        {"8"},
+        {"1"}
+       }], ")"}]}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "0543a9b8-37fe-4c1a-8062-53f81421d084"],
+ "\n\n",
+ StyleBox["\[FilledCircle] Flush\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"4"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "d060f63e-8427-4863-bff8-325e387c4cb4"],
+ StyleBox[" different suits",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n",
+  FontFamily->"Times New Roman"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"12"},
+      {"5"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "a5126047-35df-4f20-8840-8668989a02af"],
+ StyleBox[" combinations of five cards\nPossible hands selection = ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"4"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0],ExpressionUUID->
+  "b727882c-699a-4162-b9c5-478a061facb6"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"12"},
+       {"5"}
+      }], ")"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0],ExpressionUUID->
+  "7e8502a0-348a-407f-b636-e1c485a020e5"],
+ StyleBox[" - (straight flush ways)",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ "\n\n",
+ StyleBox["\[FilledCircle] Straight\n\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"2"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "e48d4f1f-3780-413b-ada8-9b6fd44ae9a7"],
+ StyleBox[" different straight (9-K and 10-A)",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "0a8d5c38-afeb-4cb6-879d-4bc34364911a"],
+ StyleBox[" ways of getting each card\nPossible hands selection = ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"2"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0],ExpressionUUID->
+  "449b1d96-9dea-4361-81a9-2f1a9fbc1f0b"],
+ Cell[BoxData[
+  FormBox[" ", TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0],ExpressionUUID->
+  "02841d4e-f55a-4a85-8504-7a5300181c2d"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"[", 
+     RowBox[{"(", GridBox[{
+        {"8"},
+        {"1"}
+       }], ")"}], "]"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0],ExpressionUUID->
+  "b139dab2-70cd-48e1-b794-1412f88a81c0"],
+ StyleBox["^5 - (straight flush ways)",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ "\n\n",
+ StyleBox["\[FilledCircle] Full hand\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "28329c15-1d94-459d-b2a5-e7d06165f758"],
+ StyleBox[" different ranks (for 3 cards of same rank)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"3"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "f675cdf4-eda6-433f-b1eb-155e9ba01e9f"],
+ StyleBox[" combinations (for 3 cards of same rank)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"5"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "6e1f0760-bb6f-43a9-8cf1-4df9892a999a"],
+ StyleBox[" different ranks (for 2 cards of same rank)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"2"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "1ff8f805-abc5-4c93-b51f-0ae1c3b9fce8"],
+ StyleBox[" combinations (for 2 cards of same rank)\nPossible hands selection \
+= ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "0492d78e-72ed-4439-b7c3-0c6b25bdd3eb"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"8"},
+       {"3"}
+      }], ")"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "4acbdc6c-44fd-4eed-8aa4-c2e6e91d83b7"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"5"},
+        {"1"}
+       }], ")"}], " ", 
+     RowBox[{"(", GridBox[{
+        {"8"},
+        {"2"}
+       }], ")"}]}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "635eab1f-4eb9-43ce-9835-7ccbc933891b"],
+ "\n\n",
+ StyleBox["\[FilledCircle] Three of a kind",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "e5cd73f7-a9b9-4222-9f28-3ff5fed8c471"],
+ StyleBox[" different ranks (three of a kind)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"3"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "281f9715-38e9-4141-bbc8-85ec932c88e7"],
+ StyleBox[" combinations (three of a kind)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "fca0c045-fd2e-4343-acaa-d7bd59d3f989"],
+ StyleBox[" different cards (fourth card)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"8"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "7ad86f85-f320-4283-b61f-40843062b881"],
+ StyleBox[" different cards (fifth card)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"5"},
+      {"2"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "b2400b8f-524a-4ac6-b647-db2feee8eca5"],
+ StyleBox[" combinations for ranks (fourth and fifth cards)\nPossible hands \
+selection = ",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"6"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "71915621-79e6-42d1-a65b-db6fa04ed4e0"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"8"},
+       {"3"}
+      }], ")"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "d140d60c-6998-426c-9959-489f1909c83e"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"8"},
+        {"1"}
+       }], ")"}], " ", 
+     RowBox[{"(", GridBox[{
+        {"8"},
+        {"1"}
+       }], ")"}]}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "83c0819d-664d-4588-9ab7-5a8fb16a627d"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"5"},
+      {"2"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "8c6b8dd9-b3ed-4b80-80a9-24ce05a304fc"],
+ "\n\n",
+ StyleBox["\[FilledCircle] Straight flush",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" (it will be subtracted from straight and flush hands) ",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["\n\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"2"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "95e5b5d8-bdff-4c50-93c4-bcd0039b630e"],
+ StyleBox[" different straight (9-K and 10-A)\n",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"4"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "fb9fba25-7b97-4a2e-866f-8635ebadc0d4"],
+ StyleBox[" different suits",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"2"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "48d904d4-dd68-4bb5-9c8f-cdda561317ec"],
+ StyleBox[" ways of getting each card\nPossible hands selection",
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox[" = ",
+  FontFamily->"Times New Roman",
+  FontColor->GrayLevel[0]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"2"},
+      {"1"}
+     }], ")"}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"3f3fdac8-c997-4fb2-bc47-83171fcf8afd"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"4"},
+       {"1"}
+      }], ")"}]}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "d6d6773b-ed29-4337-97a0-74fb550dec66"],
+ Cell[BoxData[
+  FormBox[" ", TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"e6df4291-4f85-4f6d-9f2f-ea2bbfabc934"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"[", 
+     RowBox[{"(", GridBox[{
+        {"2"},
+        {"1"}
+       }], ")"}], "]"}]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"cd4e96a2-64d5-43ce-9473-71c7cb8832eb"],
+ StyleBox["^5",
+  FontFamily->"Times New Roman",
+  FontColor->GrayLevel[0]],
+ "\n"
+}], "Subsection",
+ CellChangeTimes->{{3.7451587810565243`*^9, 3.745158786711804*^9}, 
+   3.745413901623079*^9, {3.745414980214663*^9, 3.745414982925829*^9}, {
+   3.745415021701913*^9, 3.745415138495023*^9}, {3.7454151989314504`*^9, 
+   3.7454152776307096`*^9}, {3.7454153657453003`*^9, 3.745415367290825*^9}, {
+   3.7454154521777616`*^9, 3.745415476438298*^9}, {3.745415549830745*^9, 
+   3.745415623065243*^9}, {3.745415673430763*^9, 3.7454156874014697`*^9}, {
+   3.7454157250758944`*^9, 3.7454157938867464`*^9}, {3.745416011105996*^9, 
+   3.7454160658791637`*^9}, {3.74541612371839*^9, 3.7454161242632227`*^9}, {
+   3.7454162771582565`*^9, 3.7454162894704742`*^9}, {3.745416324118826*^9, 
+   3.7454163587191954`*^9}, {3.745416395607858*^9, 3.7454164777186255`*^9}, {
+   3.7454165616058474`*^9, 3.74541665422139*^9}, {3.7454167371319113`*^9, 
+   3.7454167567029037`*^9}, {3.745416793278676*^9, 3.7454168781296043`*^9}, {
+   3.745416913465746*^9, 3.7454169269566*^9}, {3.7454171668868666`*^9, 
+   3.7454171699209347`*^9}, {3.7454172188918867`*^9, 3.745417276002336*^9}, {
+   3.7454173131279306`*^9, 3.7454173701734*^9}, {3.745417403455171*^9, 
+   3.7454174080697546`*^9}, {3.7454174964555907`*^9, 
+   3.7454177522809906`*^9}, {3.7454177909506187`*^9, 3.745417799718934*^9}, {
+   3.745417855889682*^9, 3.745417942743009*^9}, {3.7454180157175817`*^9, 
+   3.7454181719085875`*^9}, {3.745420937432901*^9, 3.7454209376308374`*^9}, {
+   3.745420968315386*^9, 3.745420988836069*^9}, {3.74549732504018*^9, 
+   3.7454973260190306`*^9}},ExpressionUUID->"27940f42-569a-4da8-b628-\
+f8de725b4ffc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Code
+\
+\>", "Section",
+ CellChangeTimes->{
+  3.7454190079872932`*^9},ExpressionUUID->"a081dbec-4781-48dc-8900-\
+ab441be0e377"],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.745419068475706*^9, 3.745419087354905*^9}, 
+   3.745419192628557*^9},ExpressionUUID->"ae32e957-7064-4279-97d3-\
+c485b546f827"],
+
+Cell[TextData[StyleBox["\[FilledCircle] Total hands",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{3.745419189917387*^9, 
+  3.745419309073771*^9},ExpressionUUID->"3762838e-8b1e-411d-a7c1-\
+6a96fb641c97"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hands", "=", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"48", ",", "5"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7454192449614754`*^9, 3.7454192564839325`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7230cc86-ddf2-42a1-84e1-9647297ea839"],
+
+Cell[BoxData["1712304"], "Output",
+ CellChangeTimes->{3.745419265940026*^9, 3.7454967121836195`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"17bd7571-a981-4826-b7fc-b6c0f74ea969"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle] Four of a kind",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{
+  3.745419348395687*^9},ExpressionUUID->"095318cc-20bc-472c-b1f3-\
+36087e98f3b5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"6", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"8", ",", "4"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"5", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"8", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7454194005526624`*^9, 3.74541945061228*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"d17faeef-5c7e-45be-a947-72c6ec545154"],
+
+Cell[BoxData["16800"], "Output",
+ CellChangeTimes->{3.7454195212319536`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"3905377a-53c2-421e-8f4c-5291f83a40c5"],
+
+Cell[BoxData["0.9811341911249404`"], "Output",
+ CellChangeTimes->{3.7454195212359524`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"4a54ee17-4069-4b77-ba3d-c21a5663d912"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle] Flush",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{
+  3.7454195651554556`*^9},ExpressionUUID->"3981d9a5-fafc-47fe-a73e-\
+d6f3dfbc90ec"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"4", ",", "1"}], "]"}], "*", 
+   RowBox[{"Binomial", "[", 
+    RowBox[{"12", ",", "5"}], "]"}]}], "-", " ", 
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"2", ",", "1"}], "]"}], "*", 
+   RowBox[{"Binomial", "[", 
+    RowBox[{"4", ",", "1"}], "]"}], "*", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Binomial", "[", 
+      RowBox[{"2", ",", "1"}], "]"}], ")"}], "^", 
+    "5"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745419646150569*^9, 3.7454196995861483`*^9}, {
+   3.745419731212427*^9, 3.74541975047351*^9}, 3.7454206194942207`*^9, {
+   3.74542101166966*^9, 3.7454210314842806`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"0bc942af-da6f-449f-bc87-3470e5042f4b"],
+
+Cell[BoxData["2912"], "Output",
+ CellChangeTimes->{3.7454197593427825`*^9, 3.745420628594178*^9, 
+  3.7454210464254704`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"c70bbec0-1d6d-4065-ae57-5f3d1d98299a"],
+
+Cell[BoxData["0.17006325979498968`"], "Output",
+ CellChangeTimes->{3.7454197593427825`*^9, 3.745420628594178*^9, 
+  3.745421046430472*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"dfd30cb5-3677-4780-b27e-29e7c85090f9"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle] Straight",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{
+  3.7454198533709*^9},ExpressionUUID->"ab2881da-0ff8-4665-a46c-d40c348a2e55"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"2", ",", "1"}], "]"}], "*", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Binomial", "[", 
+      RowBox[{"8", ",", "1"}], "]"}], ")"}], "^", "5"}]}], " ", "-", " ", 
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"2", ",", "1"}], "]"}], "*", 
+   RowBox[{"Binomial", "[", 
+    RowBox[{"4", ",", "1"}], "]"}], "*", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Binomial", "[", 
+      RowBox[{"2", ",", "1"}], "]"}], ")"}], "^", 
+    "5"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745419871502332*^9, 3.745419872884907*^9}, {
+  3.745419904864077*^9, 3.7454199154988103`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"5b575f80-66a1-4d37-afcf-159c27177fd0"],
+
+Cell[BoxData["65280"], "Output",
+ CellChangeTimes->{3.745419926396459*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"0fff65ab-1c54-485a-a2bf-eb58aedae63b"],
+
+Cell[BoxData["3.8124071426569115`"], "Output",
+ CellChangeTimes->{3.745419926399459*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"9ca60115-bb7b-4549-91b3-f99d2291e8c1"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle] Full hand",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{
+  3.74541998450766*^9},ExpressionUUID->"a25f37c1-f7dd-4008-a36b-faba612deb94"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"6", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"8", ",", "3"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"5", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"8", ",", "2"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.745420044432268*^9, 3.745420071105632*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"a8a35eb5-46cf-431c-89f2-60c67171f553"],
+
+Cell[BoxData["47040"], "Output",
+ CellChangeTimes->{3.7454200767095695`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"ff714ec8-f36f-45b1-b2ac-3e3bdad4f1c1"],
+
+Cell[BoxData["2.7471757351498334`"], "Output",
+ CellChangeTimes->{3.7454200767125683`*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"499146e1-5776-4264-96e6-f0f1281a527c"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle] Three of a kind",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{
+  3.745420113821083*^9},ExpressionUUID->"6f6440df-db59-4537-a746-\
+5baf94f58b23"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Binomial", "[", 
+   RowBox[{"6", ",", "1"}], "]"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"8", ",", "3"}], "]"}], "*", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"8", ",", "1"}], "]"}], ")"}], "^", "2"}], "*", 
+  RowBox[{"Binomial", "[", 
+   RowBox[{"5", ",", "2"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", 
+   RowBox[{"%", "/", "hands"}], "]"}], "*", "100"}]}], "Input",
+ CellChangeTimes->{{3.7454201279488983`*^9, 3.7454201279788857`*^9}, {
+  3.745420161589769*^9, 3.74542019840844*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"d5da4f3b-65d3-458f-931d-24d327693eb4"],
+
+Cell[BoxData["215040"], "Output",
+ CellChangeTimes->{3.745420204665366*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"1d7f8055-11ec-4e6f-9bd3-04c3281074eb"],
+
+Cell[BoxData["12.558517646399237`"], "Output",
+ CellChangeTimes->{3.745420204669364*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"e75d0c03-87be-4bc4-a0c1-15e8b9917aa7"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellFrame->{{0, 0}, {3, 0}},
+ CellChangeTimes->{
+  3.7453212424066367`*^9, {3.74532154668809*^9, 3.7453215480532403`*^9}, {
+   3.745419627814201*^9, 3.745419638186014*^9}, {3.7454966489377337`*^9, 
+   3.7454966565735474`*^9}},ExpressionUUID->"c99f5aab-526a-4620-9c8c-\
+d152b055915e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Task : (c)  ",
+ StyleBox["Probability of one pair using Monte Carlo method",
+  FontSize->24,
+  FontColor->RGBColor[0.5, 0, 0.5]]
+}], "Subchapter",
+ CellChangeTimes->{
+  3.74515775144685*^9, 3.7451578234359455`*^9, {3.7452991580485363`*^9, 
+   3.7452991644396057`*^9}, {3.7452991968968067`*^9, 3.7452992493759604`*^9}, 
+   3.74529936615271*^9, 3.7452994505442305`*^9, {3.7452995717206507`*^9, 
+   3.745299595102589*^9}, {3.7453013118687935`*^9, 3.7453013141531067`*^9}, 
+   3.7453018807937036`*^9},ExpressionUUID->"51c4950b-6e5c-4e8a-806d-\
+c9a3bf852783"],
+
+Cell[CellGroupData[{
+
+Cell["Summery", "Section",ExpressionUUID->"b908e205-ed09-4a4b-8b70-05d8d81c5189"],
+
+Cell[CellGroupData[{
+
+Cell["Task", "Subsection",ExpressionUUID->"3a6222e9-5672-477d-962f-34587f19ed39"],
+
+Cell[TextData[{
+ "Estimate the probability of one pair using the ",
+ StyleBox["Monte Carlo method",
+  FontWeight->"Bold"],
+ ". Draw a diagram that shows how the probability estimate stabilises with \
+increasing sample size.\n"
+}], "Text",
+ CellChangeTimes->{{3.745157890085682*^9, 3.7451579701364465`*^9}, {
+  3.7451580449107056`*^9, 3.7451580839998217`*^9}, {3.7451581211845016`*^9, 
+  3.7451581302287517`*^9}, {3.745158196429615*^9, 3.7451584109106045`*^9}, {
+  3.74515882858707*^9, 3.7451588302595577`*^9}, {3.745299427476197*^9, 
+  3.7452994346580286`*^9}, {3.745299580752924*^9, 
+  3.745299584976649*^9}},ExpressionUUID->"a70f67ea-2ffc-4c32-9ca2-\
+92bcfaa5eab7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Result", "Subsection",ExpressionUUID->"1c352646-4d56-4100-81bd-29db0b40960b"],
+
+Cell[TextData[{
+ "                     ",
+ Cell[BoxData[
+  GraphicsBox[{{}, {{}, {}, 
+     {RGBColor[1, 0, 0], PointSize[
+       NCache[
+        Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+      LineBox[{{164.99999999999977`, 0.4768333333333332}, {300., 
+       0.5533333333333333}, {700., 0.47714285714285715`}, {1000., 0.522}, {
+       1500., 0.516}, {3000., 0.5003333333333333}, {6000., 
+       0.5046666666666666}, {20000., 0.5042}, {100000., 0.5016700000000001}, {
+       400000., 0.5016}, {600000., 0.50173}, {700000., 0.5016342857142857}, {
+       800000., 0.5026825}, {1.*^6, 0.501628}, {1.3*^6, 0.5011415384615385}, {
+       1.7*^6, 0.5012429411764705}}]}}, {}, {}, {}, {}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{
+     FormBox["\"Sample Size\"", TraditionalForm], 
+     FormBox["\"Probability of 1 pair\"", TraditionalForm]},
+   AxesOrigin->{0, 0.47300833333333325`},
+   DisplayFunction->Identity,
+   Frame->{{False, False}, {False, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   ImagePadding->All,
+   ImageSize->{582., Automatic},
+   Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& )}},
+   PlotRange->{{0, 1.7*^6}, {0.4768333333333332, 0.5533333333333333}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{
+      Scaled[0.02], 
+      Scaled[0.02]}, {
+      Scaled[0.05], 
+      Scaled[0.05]}},
+   Ticks->{Automatic, Automatic}]],
+  CellChangeTimes->{3.7454933889279375`*^9, 3.7454935453314734`*^9, 
+   3.7454942662807274`*^9, 3.7454945342795935`*^9, 3.745494673540717*^9},
+  ExpressionUUID->"d6f7daba-8d31-48ce-8e4e-85bd48901f63"],
+ "\n"
+}], "Text",
+ CellChangeTimes->{
+  3.7451586954415655`*^9, {3.745495379810766*^9, 3.745495396714218*^9}, {
+   3.7454954330111485`*^9, 
+   3.7454954456911097`*^9}},ExpressionUUID->"4ab558b0-f126-424d-a4e4-\
+31e73d751fb1"],
+
+Cell[TextData[{
+ StyleBox["The above figure was taken from the output in the code section and \
+we can see clearly the convergence of probability value when  sample size \
+increases (i.e stabilises) and fixed at the value ",
+  FontSize->16],
+ StyleBox["0.501243 ",
+  FontSize->16,
+  FontWeight->"Bold"],
+ StyleBox["and this value is very closed to the value of one pair in Task \
+(a).",
+  FontSize->16],
+ StyleBox["\n\n                        ",
+  FontSize->16,
+  FontWeight->"Bold"],
+ StyleBox[" ",
+  FontSize->24,
+  FontWeight->"Bold"],
+ Cell[BoxData[GridBox[{
+    {
+     StyleBox[
+      RowBox[{
+       StyleBox[" ",
+        FontColor->RGBColor[0.6, 0.4, 0.2]], 
+       RowBox[{
+        StyleBox[
+         RowBox[{"Probability", " ", "of", " ", "One", " ", "pair"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["     ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           RowBox[{"decks", "/", "48"}], " ", "cards"}], ")"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["     ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"Census", " ", "method"}], ")"}],
+         FontSize->18,
+         FontColor->RGBColor[0.5, 0, 0.5]]}]}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{
+       StyleBox["  ",
+        FontColor->RGBColor[0.6, 0.4, 0.2]], 
+       RowBox[{
+        StyleBox[
+         RowBox[{"Probability", "  ", "of", " ", "One", " ", "pair"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["         ",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           RowBox[{"deck", "/", "48"}], " ", "cards"}], ")"}],
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox["\[IndentingNewLine]",
+         FontColor->RGBColor[0.6, 0.4, 0.2]], 
+        StyleBox[" ",
+         FontColor->RGBColor[1, 0.5, 0.5]], 
+        StyleBox[
+         RowBox[{"(", 
+          RowBox[{"Monte", " ", "Carlo", " ", "method"}], ")"}],
+         FontSize->18,
+         FontColor->RGBColor[0.5, 0, 0.5]]}]}],
+      FontWeight->"Bold"]},
+    {
+     StyleBox[
+      RowBox[{"50.121", "%"}],
+      FontWeight->"Bold"], 
+     StyleBox[
+      RowBox[{
+       StyleBox["50.124",
+        FontSize->16], "%"}],
+      FontWeight->"Bold"]}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}}]],ExpressionUUID->
+  "35bbf70d-e59e-4d5c-b427-93e967a194f7"],
+ StyleBox["\n",
+  FontSize->16,
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{
+  3.745158699310383*^9, 3.7454936403057013`*^9, {3.7454954686193476`*^9, 
+   3.7454955833540287`*^9}, {3.745495613384982*^9, 3.7454957777291317`*^9}, {
+   3.7454958966015663`*^9, 3.7454959810655518`*^9}, {3.7454960138145804`*^9, 
+   3.7454960755386047`*^9}, {3.7454961279087076`*^9, 3.74549614243163*^9}, {
+   3.7454961955695643`*^9, 3.745496237449855*^9}, {3.745497002318692*^9, 
+   3.745497145016383*^9}, {3.7454973881730385`*^9, 
+   3.7454974216653533`*^9}},ExpressionUUID->"fd807f01-8d46-468f-b576-\
+33a6f6164532"],
+
+Cell[BoxData[
+ FormBox["", TraditionalForm]], "DisplayFormula",
+ CellChangeTimes->{
+  3.7451587007109566`*^9},ExpressionUUID->"6844b20f-9540-4775-b6ff-\
+6db7bc20980b"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.745158702103536*^9},ExpressionUUID->"108f61e4-effc-4503-aae4-\
+070781ef0ccf"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Monte Carlo method",
+ FontWeight->"Plain",
+ FontColor->GrayLevel[0]]], "Section",
+ CellChangeTimes->{3.7451587257123528`*^9, 
+  3.745302086136709*^9},ExpressionUUID->"6db2a3cb-4594-4044-b9f1-\
+ff1c7df50bcf"],
+
+Cell[CellGroupData[{
+
+Cell["The Model", "Subsection",
+ CellChangeTimes->{{3.7451587810565243`*^9, 
+  3.745158786711804*^9}},ExpressionUUID->"a7065720-d251-4fd1-a07f-\
+54aebc7b0b8c"],
+
+Cell[TextData[{
+ StyleBox["We will use the following steps to estimate the probability of one \
+pair for different sample sizes using Monte Carlo method:",
+  FontWeight->"Bold"],
+ "\n1. Creating a 2 decks (with 24 cards each) in the same way as in Task (a)\
+\n2. Creating a pair pattern with excluding the higher ranked combinations, \
+then counting the possible one pair hands\n3. Generate random samples from \
+possible hands and Counting the number of one pairs in each sample\n4. \
+Selecting sample sizes where: 1 ",
+ StyleBox["\[LessEqual]",
+  FontSize->24],
+ "  sample size  ",
+ StyleBox["\[LessEqual]",
+  FontSize->24],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"48"},
+      {"5"}
+     }], ")"}], TraditionalForm]],
+  FontFamily->"Times New Roman",ExpressionUUID->
+  "c7787af7-a593-4ad0-81b8-175d994a288e"],
+ " \n5. Plotting the sample size vs probability of one pair counting."
+}], "Text",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIwfbxrwcfnrx2dspcdBdFC3tNOgehTDR3nQbSeQOht
+EC23aheY3iPa+AhEV/fsfwyilZ4efA6iJ9kefweiPz1eZfcJSHes2e8GogUC
+JiR9AdJbdj5KAdGTsrvzQLSFxbUCEN3N5bwLRL/91wmm7/8suACi44XOXATR
+fyrUn4LolY0Zr0B0ELfoNxC9zN0OTH+5ps7xFUgz5p/jBNE/XnsFfwPSN86m
+xYDoLLYLySD6C+ekFBCt9/FnBog+U783B0T/eGNRCqILBBQqQHT8jckNIPpE
+r0cLiBa9ZNQBotmdloPpGGXFPhDtVHSkH2yurqLeDyB974QRmAYADofY3w==
+
+  "],ExpressionUUID->"7acc67e9-f6d9-4bb6-98e6-1810602b9320"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Code", "Section",
+ CellChangeTimes->{
+  3.7453213490151663`*^9},ExpressionUUID->"1d736fbf-9487-4f19-b0cd-\
+350f959b60f2"],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle] ",
+  FontFamily->"Times New Roman",
+  FontSize->18,
+  FontColor->RGBColor[0.5, 0, 0.5]],
+ StyleBox["Creating a 2 decks with 24 cards each ",
+  FontSize->18,
+  FontColor->RGBColor[0.5, 0, 0.5]]
+}], "Text",
+ CellChangeTimes->{{3.7454855893353863`*^9, 3.7454856509751215`*^9}, {
+  3.745497502826073*^9, 
+  3.745497514034946*^9}},ExpressionUUID->"8a58e08f-5471-4831-b7c1-\
+827cd0506c70"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "6", " ", "cards", " ", 
+    RowBox[{"deck", "/", "total"}], " ", "24", " ", "cards"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onedeck", "=", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"spades", "[", "i", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"clubs", "[", "i", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"hearts", "[", "i", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"diamonds", "[", "i", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "9", ",", "14"}], "}"}]}], "]"}]}], "]"}]}], ";"}],
+   "  "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"twodecks", " ", "=", " ", 
+    RowBox[{"Join", "[", 
+     RowBox[{"onedeck", ",", " ", "onedeck"}], "]"}]}], ";"}], "  ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "2", " ", 
+    RowBox[{"decks", "/", "total"}], " ", "48", " ", "cards"}], " ", 
+   "**)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rankQ", "[", 
+    RowBox[{"card1_", ",", " ", "card2_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"card1", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "<=", 
+    RowBox[{"card2", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rankSort", "[", "hand_", "]"}], " ", ":=", " ", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"hand", ",", " ", "rankQ"}], "]"}]}], " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"hands", " ", "=", " ", 
+    RowBox[{"rankSort", "/@", 
+     RowBox[{"Subsets", "[", 
+      RowBox[{"twodecks", ",", " ", 
+       RowBox[{"{", "5", "}"}]}], "]"}]}]}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{"totalhands", "=", 
+  RowBox[{"Length", "[", "hands", "]"}], " "}]}], "Input",
+ CellChangeTimes->{{3.7454855655995603`*^9, 3.7454855656305513`*^9}, 
+   3.7454857067452817`*^9, {3.7454860844726954`*^9, 3.7454860865880575`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"6670e496-8cef-4c31-bc9a-5bf2004b97a6"],
+
+Cell[BoxData["1712304"], "Output",
+ CellChangeTimes->{3.7454861587153068`*^9, 3.745489305640109*^9, 
+  3.7454898971576357`*^9, 3.7454902021175704`*^9, 3.7454926954395943`*^9, 
+  3.745493236224765*^9, 3.7454935933466363`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"12546c1e-e8b8-4598-afe3-9ca774fae04e"]
+}, Open  ]],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.745158699310383*^9},ExpressionUUID->"56e446e8-a4f1-496a-97d9-\
+5986c0f4054e"],
+
+Cell[TextData[{
+ StyleBox["\[FilledCircle] ",
+  FontFamily->"Times New Roman",
+  FontSize->18,
+  FontColor->RGBColor[0.5, 0, 0.5]],
+ StyleBox["Creating a pair pattern and counting the possible hands",
+  FontSize->18,
+  FontColor->RGBColor[0.5, 0, 0.5]]
+}], "Text",
+ CellChangeTimes->{{3.745485827349872*^9, 
+  3.7454858450818367`*^9}},ExpressionUUID->"ee0e05cc-9799-448b-b67d-\
+156c591cb095"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onepair", "[", 
+     RowBox[{"{", 
+      RowBox[{"_spades", ".."}], "}"}], "]"}], ":=", "False"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "excluding", " ", "flush"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", 
+    RowBox[{"{", 
+     RowBox[{"_clubs", ".."}], "}"}], "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", 
+    RowBox[{"{", 
+     RowBox[{"_hearts", ".."}], "}"}], "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", 
+    RowBox[{"{", 
+     RowBox[{"_diamonds", ".."}], "}"}], "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onepair", "[", 
+     RowBox[{"{", 
+      RowBox[{"___", ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", "___"}], "}"}], "]"}], ":=", 
+    "False"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "*", " ", "excluding", " ", "3", " ", "of", " ", "a", " ", "kind"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onepair", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "x_", "]"}], ",", 
+        RowBox[{"_", "[", "z_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+      RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "False"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "excluding", " ", "2", " ", "pairs"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onepair", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"_", "[", "z_", "]"}], ",", 
+        RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+        RowBox[{"_", "[", "y_", "]"}]}], "}"}], "/;", 
+      RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "False"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "y_", "]"}], ",", 
+       RowBox[{"_", "[", "z_", "]"}]}], "}"}], "/;", 
+     RowBox[{"x", "\[NotEqual]", "y"}]}], "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onepair", "[", 
+     RowBox[{"{", 
+      RowBox[{"___", ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", 
+       RowBox[{"_", "[", "x_", "]"}], ",", " ", "___"}], "}"}], "]"}], ":=", 
+    "True"}], ";"}], "  ", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "only", " ", "1", " ", "pair", " ", "required"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"onepair", "[", "_", "]"}], ":=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NoOfPairs", "=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"hands", ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "onepair", ")"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7454858649138503`*^9, 3.7454858942450037`*^9}, {
+  3.7454859385106373`*^9, 3.745485968961456*^9}, {3.745486013913885*^9, 
+  3.745486067868702*^9}, {3.7454862946063013`*^9, 3.7454864467008667`*^9}, {
+  3.745488934770067*^9, 3.7454889446510878`*^9}, {3.745488976827368*^9, 
+  3.745488983287422*^9}, {3.745489247058793*^9, 3.745489263075958*^9}, {
+  3.7454894395956755`*^9, 3.7454894402044983`*^9}, {3.745489535183821*^9, 
+  3.7454895357356577`*^9}, {3.7454895690146112`*^9, 3.7454896185676823`*^9}, {
+  3.7454899228558774`*^9, 3.7454899280513115`*^9}, {3.7454911717399855`*^9, 
+  3.745491194582102*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"cbbc845f-35fa-4fac-a33b-58416d1f1e75"],
+
+Cell[BoxData["858240"], "Output",
+ CellChangeTimes->{
+  3.745486181138538*^9, 3.745486506672758*^9, 3.7454893257520347`*^9, 
+   3.745489636000414*^9, {3.7454899155550814`*^9, 3.745489943919518*^9}, 
+   3.745490247245947*^9, 3.7454912460245676`*^9, 3.745493197019608*^9, 
+   3.7454932585201674`*^9, 3.7454941768777695`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"5adf3c6e-d028-45ba-8d86-7b6b303991c9"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle]  Generate random samples and counting \
+the number of one pairs",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0.5, 0, 0.5]]], "Text",
+ CellChangeTimes->{{3.7454905100496426`*^9, 3.7454905389009314`*^9}, 
+   3.745490584885069*^9, {3.745491049081014*^9, 
+   3.7454910540525184`*^9}},ExpressionUUID->"6661eaf4-81d0-47b9-8cab-\
+e0a3cb318e49"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"onepairSample", "[", "n_", "]"}], ":=", 
+  RowBox[{"RandomSample", "[", 
+   RowBox[{"hands", ",", " ", "n"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"onepairCount", "[", "n_", "]"}], ":=", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{"onepairSample", "[", "n", "]"}], ",", " ", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", "onepair", ")"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7454905951989594`*^9, 3.745490602711687*^9}, {
+  3.7454906553957872`*^9, 3.745490661858857*^9}, {3.7454909169778385`*^9, 
+  3.745490918256459*^9}, {3.745490952048252*^9, 3.745490978080393*^9}, {
+  3.7454911994676275`*^9, 3.7454912008412075`*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"5722aec1-677f-440b-82bc-a6c1d3e310ec"],
+
+Cell[TextData[StyleBox["\[FilledCircle]  Selecting sample sizes ",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0.5, 0, 0.5]]], "Text",
+ CellChangeTimes->{{3.7454908322304215`*^9, 3.745490874783575*^9}, 
+   3.7454910785551224`*^9},ExpressionUUID->"7f9515c0-523b-4033-aae3-\
+02ac5963429f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SampleSize", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+   "100", ",", " ", "300", ",", " ", "700", ",", " ", "1000", ",", " ", 
+    "1500", ",", " ", "3000", ",", " ", "6000", ",", " ", "20000", ",", " ", 
+    "100000", ",", " ", "400000", ",", " ", "600000", ",", " ", "700000", ",",
+     " ", "800000", ",", " ", "1000000", ",", " ", "1300000", ",", " ", 
+    "1700000"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Samples", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"#", ",", " ", 
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"onepairCount", "[", "#", "]"}], "]"}], " ", "/", " ", 
+       "#"}]}], "}"}], "&"}], "/@", "SampleSize"}]}]}], "Input",
+ CellChangeTimes->{{3.7454912778419666`*^9, 3.74549134696432*^9}, {
+   3.7454913859915423`*^9, 3.745491473278203*^9}, {3.7454915172219315`*^9, 
+   3.7454915223013973`*^9}, {3.745491612445232*^9, 3.7454916173647485`*^9}, 
+   3.7454920789514055`*^9, {3.745493052507159*^9, 3.7454931439605694`*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"8db8913d-a7cb-4faa-937d-cddedd55893a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "100", ",", "300", ",", "700", ",", "1000", ",", "1500", ",", "3000", ",", 
+   "6000", ",", "20000", ",", "100000", ",", "400000", ",", "600000", ",", 
+   "700000", ",", "800000", ",", "1000000", ",", "1300000", ",", "1700000"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7454933100521946`*^9, 3.7454941986476355`*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"7cbac629-92c8-4ce7-af79-37edc36af201"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"100", ",", "0.44`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"300", ",", "0.5533333333333333`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"700", ",", "0.47714285714285715`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1000", ",", "0.522`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1500", ",", "0.516`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3000", ",", "0.5003333333333333`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6000", ",", "0.5046666666666666`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"20000", ",", "0.5042`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"100000", ",", "0.5016700000000001`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"400000", ",", "0.5016`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"600000", ",", "0.50173`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"700000", ",", "0.5016342857142857`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"800000", ",", "0.5026825`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1000000", ",", "0.501628`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1300000", ",", "0.5011415384615385`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1700000", ",", "0.5012429411764705`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7454933100521946`*^9, 3.7454942551918535`*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"4913ba7e-f567-420f-9b78-078a69897c7a"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\[FilledCircle]  Plotting the sample sizes ",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontColor->RGBColor[0.5, 0, 0.5]]], "Text",
+ CellChangeTimes->{{3.7454918099426107`*^9, 
+  3.7454918391747904`*^9}},ExpressionUUID->"fc0649ac-40cc-4f95-bec9-\
+21c0199967d5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{"Samples", ",", " ", 
+    RowBox[{"AxesLabel", " ", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Sample Size\>\"", ",", "\"\<Probability of 1 pair\>\""}], 
+      "}"}]}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", 
+     RowBox[{"{", "Red", "}"}]}]}], "]"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7454921616264515`*^9, 3.7454921918873134`*^9}, {
+   3.7454922222261577`*^9, 3.745492229607929*^9}, {3.7454935278148665`*^9, 
+   3.7454935386137967`*^9}, 3.74549452957742*^9, {3.7454946607196226`*^9, 
+   3.7454946683279543`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"3a861ea6-8667-4c26-a061-1f495196a5f7"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[1, 0, 0], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[{{164.99999999999977`, 0.4768333333333332}, {300., 
+      0.5533333333333333}, {700., 0.47714285714285715`}, {1000., 0.522}, {
+      1500., 0.516}, {3000., 0.5003333333333333}, {6000., 
+      0.5046666666666666}, {20000., 0.5042}, {100000., 0.5016700000000001}, {
+      400000., 0.5016}, {600000., 0.50173}, {700000., 0.5016342857142857}, {
+      800000., 0.5026825}, {1.*^6, 0.501628}, {1.3*^6, 0.5011415384615385}, {
+      1.7*^6, 0.5012429411764705}}]}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Sample Size\"", TraditionalForm], 
+    FormBox["\"Probability of 1 pair\"", TraditionalForm]},
+  AxesOrigin->{0, 0.47300833333333325`},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 1.7*^6}, {0.4768333333333332, 0.5533333333333333}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.7454933889279375`*^9, 3.7454935453314734`*^9, 
+  3.7454942662807274`*^9, 3.7454945342795935`*^9, 3.745494673540717*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"fda80e45-97d1-47be-9b53-edb3de73de2a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1200, 1875},
+WindowMargins->{{Automatic, 2624}, {Automatic, -615}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{None, None, None}, {
+   Cell[
+    TextData[{"KTH/ICT - Kommunikationssystem"}], "PageHeader", FontFamily -> 
+    "Arial", FontSize -> 9], None, None}},
+PageFooters->{{None, None, None}, {None, 
+   Cell[
+    TextData[{
+      CounterBox["Page"]}], "PageNumber"], None}},
+PrintingOptions->{"FacingPages"->False},
+TrackCellChangeTimes->True,
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell["Modify the definitions below to change the default appearance of all \
+cells in a given style. \nMake modifications to any definition using commands \
+in the Format menu.", "Text"], 
+   Cell[
+    CellGroupData[{
+      Cell["Notebook Options Settings", "Section"], 
+      Cell[
+       StyleData["Notebook"], ShowCellBracket -> Automatic]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Title and Section Cells", "Section"], 
+      Cell[
+       CellGroupData[{
+         Cell["Title", "Subsection"], 
+         Cell[
+          StyleData["Title"], FontFamily -> "Arial", FontSize -> 36, 
+          FontWeight -> "Bold", FontColor -> GrayLevel[0.5]], 
+         Cell[
+          StyleData["Subtitle"], FontFamily -> "Arial", FontWeight -> "Bold"], 
+         Cell[
+          StyleData["Subsubtitle"], FontFamily -> "Arial", FontSize -> 18]}, 
+        Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Chapter", "Subsection", 
+          CellChangeTimes -> {{3.6182073006504073`*^9, 
+           3.6182073204926414`*^9}}], 
+         Cell[
+          StyleData["Chapter"], FontFamily -> "Arial", FontSize -> 34, 
+          FontWeight -> "Plain", FontSlant -> "Plain", 
+          FontVariations -> {"StrikeThrough" -> False, "Underline" -> False}], 
+         Cell[
+          StyleData["Subchapter"], CellDingbat -> 
+          StyleBox["\[FilledSmallSquare]", Alignment -> Baseline, 
+            RGBColor[
+            0.09803921568627451, 0.32941176470588235`, 0.6509803921568628]], 
+          FontFamily -> "Arial", FontSize -> 28, FontWeight -> "Plain", 
+          FontSlant -> "Plain", 
+          FontVariations -> {
+           "StrikeThrough" -> False, "Underline" -> False}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Section", "Subsection"], 
+         Cell[
+          StyleData["Section"], CellDingbat -> None, ShowGroupOpener -> True, 
+          FontFamily -> "Arial", FontSize -> 24, FontWeight -> "Bold", 
+          FontColor -> GrayLevel[0.5]], 
+         Cell[
+          StyleData["Subsection"], CellDingbat -> None, ShowGroupOpener -> 
+          True, CellMargins -> {{40., 3.}, {8., 12.}}, FontFamily -> "Arial", 
+          FontSize -> 18, FontWeight -> "Bold", FontColor -> GrayLevel[0.3]], 
+         Cell[
+          StyleData["Subsubsection"], CellDingbat -> None, ShowGroupOpener -> 
+          True, CellMargins -> {{53., Inherited}, {2, 10}}, FontFamily -> 
+          "Arial", FontSize -> 16, FontWeight -> "Bold", FontColor -> 
+          GrayLevel[0.]], 
+         Cell[
+          StyleData["Subsubsubsection"], CellDingbat -> None, ShowGroupOpener -> 
+          True, MenuSortingValue -> 1400, FontFamily -> "Arial Narrow", 
+          FontSize -> 14, FontWeight -> "Bold", FontSlant -> "Plain", 
+          FontVariations -> {"StrikeThrough" -> False, "Underline" -> False}, 
+          FontColor -> GrayLevel[0]]}, Closed]]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Body Text", "Section"], 
+      Cell[
+       CellGroupData[{
+         Cell["Standard", "Subsection"], 
+         Cell[
+          StyleData["Text"], FontFamily -> "Times"], 
+         Cell[
+          StyleData["SmallText"], MenuSortingValue -> 1425, FontFamily -> 
+          "Times"]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Display", "Subsection"], 
+         Cell[
+          CellGroupData[{
+            Cell["Lists", "Subsubsection"], 
+            Cell[
+             StyleData["Item"], CellDingbat -> 
+             StyleBox["\[FilledCircle]", Alignment -> Baseline, 
+               GrayLevel[0.3]], FontFamily -> "Times"], 
+            Cell[
+             StyleData["ItemParagraph"], FontFamily -> "Times"], 
+            Cell[
+             StyleData["Subitem"], CellDingbat -> 
+             StyleBox["\[FilledSmallCircle]", Alignment -> Baseline, 
+               GrayLevel[0.3]], FontFamily -> "Times"], 
+            Cell[
+             StyleData["SubitemParagraph"], FontFamily -> "Times"], 
+            Cell[
+             StyleData["Subsubitem"], CellDingbat -> 
+             StyleBox["\[FilledSmallCircle]", Alignment -> Baseline, 
+               GrayLevel[0.5]], FontFamily -> "Times"], 
+            Cell[
+             StyleData["SubsubitemParagraph"], FontFamily -> "Times"], 
+            Cell[
+             StyleData["ItemNumbered"], FontFamily -> "Times"], 
+            Cell[
+             StyleData["SubitemNumbered"], FontFamily -> "Times"], 
+            Cell[
+             StyleData["SubsubitemNumbered"], FontFamily -> "Times"]}, 
+           Closed]], 
+         Cell[
+          CellGroupData[{
+            Cell["Templates", "Subsubsection"], 
+            Cell[
+             StyleData[
+             "SideCaptionArray", StyleDefinitions -> StyleData["Text"]], 
+             GridBoxOptions -> {
+              GridBoxAlignment -> {"Columns" -> {Left}, "Rows" -> {Center}}, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}}], 
+            Cell[
+             StyleData[
+             "SideCaption", StyleDefinitions -> StyleData["SmallText"]]]}, 
+           Closed]]}, Closed]]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Input and Output Cells", "Section"], 
+      Cell[
+       StyleData["Input"], ShowCellBracket -> True], 
+      Cell[
+       StyleData["InputOnly"], ShowCellBracket -> True], 
+      Cell[
+       StyleData["Code"], ShowCellBracket -> True], 
+      Cell[
+       StyleData["Output"], ShowCellBracket -> True], 
+      Cell[
+       StyleData["Message"], ShowCellBracket -> True], 
+      Cell[
+       StyleData["Print"], ShowCellBracket -> True]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Formulas and Programming", "Section"], 
+      Cell[
+       StyleData["InlineFormula"]], 
+      Cell[
+       StyleData["DisplayFormula"], FontFamily -> "Times"], 
+      Cell[
+       StyleData["DisplayFormulaNumbered"], FontFamily -> "Times"], 
+      Cell[
+       StyleData["Program"], ShowCellBracket -> True]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Citation Styles", "Section"], 
+      Cell[
+       StyleData["Reference"]]}, Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+       TextData[{"Styles for ", 
+         StyleBox["Mathematica", FontSlant -> "Italic"], 
+         " System\[Hyphen]specific Elements"}], "Section"], 
+      Cell[
+       CellGroupData[{
+         Cell["Default Box Styles", "Subsection"], 
+         Cell[
+          StyleData["Graphics"], FontFamily -> "Times"], 
+         Cell[
+          StyleData["Graphics3D"], FontFamily -> "Times"], 
+         Cell[
+          StyleData["NetworkGraphics"], FontFamily -> "Times"]}, Closed]]}, 
+     Closed]]}, Visible -> False, FrontEndVersion -> 
+  "12.0 for Mac OS X x86 (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 162, 3, 81, "Title",ExpressionUUID->"2e086750-1cf1-4c43-bc57-bac07652a650"],
+Cell[745, 27, 276, 8, 50, "Text",ExpressionUUID->"679e81cd-23f2-4ac3-aad0-55498a6469d8"],
+Cell[1024, 37, 419, 10, 69, "Text",ExpressionUUID->"39bfcd1a-7896-4364-9d2c-9b6c98366775"],
+Cell[CellGroupData[{
+Cell[1468, 51, 424, 10, 63, "Subchapter",ExpressionUUID->"2760ab7a-2fed-4ae4-a63f-890119ad5062"],
+Cell[CellGroupData[{
+Cell[1917, 65, 81, 0, 59, "Section",ExpressionUUID->"28ab532a-4f99-4328-b494-a8a51a0e3e70"],
+Cell[CellGroupData[{
+Cell[2023, 69, 81, 0, 41, "Subsection",ExpressionUUID->"4df8543c-22f8-401d-8973-c66d5fa62864"],
+Cell[2107, 71, 2566, 58, 413, "Text",ExpressionUUID->"73a11f4c-c38d-499a-a813-a3467d0d77bd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4710, 134, 83, 0, 41, "Subsection",ExpressionUUID->"39a0ef6c-6a2c-4081-9062-84513a76c571"],
+Cell[4796, 136, 6451, 186, 415, "Text",ExpressionUUID->"1bf59983-7c21-4d19-805a-0068e3a1cdc7"],
+Cell[11250, 324, 2113, 47, 166, "Text",ExpressionUUID->"099547d9-27d6-4bae-89be-e7ecb17e4adb"],
+Cell[13366, 373, 140, 3, 31, "Text",ExpressionUUID->"6dc335f4-7b1d-41d4-a2bd-24cc570aff2f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13555, 382, 266, 5, 59, "Section",ExpressionUUID->"6943093f-8a76-4b29-9b2d-76d8c3875b28"],
+Cell[13824, 389, 22234, 750, 860, "Subsection",ExpressionUUID->"7e65a304-4725-4568-8fa8-1b4ca87c4741"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36095, 1144, 78, 0, 59, "Section",ExpressionUUID->"eb232638-2837-4382-9654-616c94d28459"],
+Cell[36176, 1146, 308, 7, 39, "Text",ExpressionUUID->"ce8eeb57-dacc-4a6f-8395-825f3d373faa"],
+Cell[36487, 1155, 223, 4, 30, "Input",ExpressionUUID->"4480ca3d-fd05-465d-a3ad-23a0758b1517"],
+Cell[36713, 1161, 578, 14, 43, "Text",ExpressionUUID->"b9b9d0a8-6835-4c65-afd7-199b488e7f7f"],
+Cell[CellGroupData[{
+Cell[37316, 1179, 2643, 70, 157, "Input",ExpressionUUID->"36b94464-b102-4ef9-98d0-85f5bb1fd666"],
+Cell[39962, 1251, 512, 7, 34, "Output",ExpressionUUID->"9cd10572-d7c7-4ea1-ab11-27933d30d258"]
+}, Open  ]],
+Cell[40489, 1261, 547, 17, 43, "Text",ExpressionUUID->"e7a42ef1-c44c-4c98-9a7f-c6386ccd972a"],
+Cell[CellGroupData[{
+Cell[41061, 1282, 2052, 61, 178, "Input",ExpressionUUID->"fe349015-5b3b-48cd-8d74-97ef7946b158"],
+Cell[43116, 1345, 415, 6, 34, "Output",ExpressionUUID->"8b25e5c6-3572-4ae9-97a6-9bea4119c09b"],
+Cell[43534, 1353, 431, 6, 34, "Output",ExpressionUUID->"0a58c0e1-b77a-45df-b06b-5196ef1a138c"]
+}, Open  ]],
+Cell[43980, 1362, 543, 17, 43, "Text",ExpressionUUID->"11c03b6c-ad5b-4f4a-8dd0-708658c21186"],
+Cell[CellGroupData[{
+Cell[44548, 1383, 1059, 30, 73, "Input",ExpressionUUID->"ab01f1b1-78e1-4bad-b637-5cd84c631005"],
+Cell[45610, 1415, 323, 4, 34, "Output",ExpressionUUID->"21fdcf07-620f-49c1-abd3-583158062d15"],
+Cell[45936, 1421, 337, 4, 34, "Output",ExpressionUUID->"3fbc6327-3c64-484b-b75d-50806d8b0ab5"]
+}, Open  ]],
+Cell[46288, 1428, 560, 17, 43, "Text",ExpressionUUID->"e072687c-527e-4dcd-863b-fd162eab9ef8"],
+Cell[CellGroupData[{
+Cell[46873, 1449, 1314, 32, 73, "Input",ExpressionUUID->"584aa2f8-deed-4e48-ac15-c14b1dd0171e"],
+Cell[48190, 1483, 326, 4, 34, "Output",ExpressionUUID->"e3482ce9-01ba-46b3-8f96-5005ee723ce5"],
+Cell[48519, 1489, 340, 4, 34, "Output",ExpressionUUID->"50ed88d2-45dd-4a11-9ca9-8ec77f063955"]
+}, Open  ]],
+Cell[48874, 1496, 545, 17, 43, "Text",ExpressionUUID->"fa1a7ffe-c173-441c-bdc7-85d1f2de5484"],
+Cell[CellGroupData[{
+Cell[49444, 1517, 735, 20, 94, "Input",ExpressionUUID->"6b8a9b4d-36bb-4aee-8d68-cb419cef2d9e"],
+Cell[50182, 1539, 314, 4, 34, "Output",ExpressionUUID->"b0791c47-8d39-411d-a764-1d82916d538a"],
+Cell[50499, 1545, 331, 4, 34, "Output",ExpressionUUID->"4910cd61-53e5-499b-93c0-2944cd58d035"]
+}, Open  ]],
+Cell[50845, 1552, 566, 17, 43, "Text",ExpressionUUID->"c384814b-35f3-45da-a892-89d10bc8b08d"],
+Cell[CellGroupData[{
+Cell[51436, 1573, 1100, 31, 115, "Input",ExpressionUUID->"caaafb12-b87f-4c25-a5e2-9c96222b70b2"],
+Cell[52539, 1606, 327, 4, 34, "Output",ExpressionUUID->"75b398f1-fb9d-4eb4-9337-00f34ae07143"],
+Cell[52869, 1612, 341, 4, 34, "Output",ExpressionUUID->"ac8dd21d-4a4d-4494-82ea-9f87c4b1ba1b"]
+}, Open  ]],
+Cell[53225, 1619, 545, 17, 43, "Text",ExpressionUUID->"df813be7-8a6a-4ac3-a722-40778df59132"],
+Cell[CellGroupData[{
+Cell[53795, 1640, 1492, 41, 115, "Input",ExpressionUUID->"74a66c47-ea39-4018-86c9-b72cd4888ec5"],
+Cell[55290, 1683, 316, 4, 34, "Output",ExpressionUUID->"6909f1c9-fd43-478e-8221-25c1754bdf2a"],
+Cell[55609, 1689, 330, 4, 34, "Output",ExpressionUUID->"03a164dc-dae3-46bd-ae07-9db9738f622f"]
+}, Open  ]],
+Cell[55954, 1696, 544, 17, 43, "Text",ExpressionUUID->"3f044676-39ec-4de3-95fe-a54c4291a1c7"],
+Cell[CellGroupData[{
+Cell[56523, 1717, 1343, 39, 115, "Input",ExpressionUUID->"ed72ab8c-ef65-436d-9a9f-e4a5e652b478"],
+Cell[57869, 1758, 322, 4, 34, "Output",ExpressionUUID->"6f87f35a-f0ef-4bc9-a50e-99a493c5a64d"],
+Cell[58194, 1764, 337, 4, 34, "Output",ExpressionUUID->"4e9a83ad-0772-427e-99a7-67feefed870a"]
+}, Open  ]],
+Cell[58546, 1771, 538, 17, 43, "Text",ExpressionUUID->"0947c5b5-a803-4e73-8e60-45326ea8362f"],
+Cell[CellGroupData[{
+Cell[59109, 1792, 2446, 70, 157, "Input",ExpressionUUID->"2caf545c-cf85-4212-9b3b-ea31a3b508e8"],
+Cell[61558, 1864, 320, 4, 34, "Output",ExpressionUUID->"edacd5bc-5204-4ad6-8a60-0cdf2403d098"],
+Cell[61881, 1870, 331, 4, 34, "Output",ExpressionUUID->"fd9ad3bb-3588-4e6c-b005-f82ca2647144"]
+}, Open  ]],
+Cell[62227, 1877, 542, 17, 43, "Text",ExpressionUUID->"9cbaaa8d-a9d2-4637-a481-787714db77d4"],
+Cell[CellGroupData[{
+Cell[62794, 1898, 1428, 39, 115, "Input",ExpressionUUID->"633ccf41-e38c-4d2c-ad78-55ae9335b0ed"],
+Cell[64225, 1939, 319, 4, 34, "Output",ExpressionUUID->"a6fc65a0-2948-4085-a90f-92d75eaf86a9"],
+Cell[64547, 1945, 332, 4, 34, "Output",ExpressionUUID->"47bd0133-3883-494a-b594-3b58608539a2"]
+}, Open  ]],
+Cell[64894, 1952, 462, 15, 43, "Text",ExpressionUUID->"0f2f27d9-66a3-4161-8a7d-c5ba6eae8331"],
+Cell[CellGroupData[{
+Cell[65381, 1971, 1203, 33, 73, "Input",ExpressionUUID->"a26b300a-ea0a-4515-bde1-63eee5b54723"],
+Cell[66587, 2006, 320, 4, 34, "Output",ExpressionUUID->"fce91fa7-0406-4441-af78-b22310e0428d"],
+Cell[66910, 2012, 332, 4, 34, "Output",ExpressionUUID->"89a09c79-4077-4814-b442-8d306fb6af64"]
+}, Open  ]],
+Cell[67257, 2019, 292, 7, 39, "Text",ExpressionUUID->"ea257c45-f6af-4da1-86be-77dfe4cb0710"],
+Cell[67552, 2028, 344, 11, 43, "Text",ExpressionUUID->"dd50260c-2b5d-4bb1-b91f-0d752a3296a7"],
+Cell[CellGroupData[{
+Cell[67921, 2043, 812, 13, 52, "Input",ExpressionUUID->"7703fb3c-f08d-4072-8584-518e4e1ba93b"],
+Cell[68736, 2058, 205, 3, 34, "Output",ExpressionUUID->"bdebd0f0-a7d2-4e58-96d2-d9021bdb694c"]
+}, Open  ]],
+Cell[68956, 2064, 421, 15, 43, "Text",ExpressionUUID->"ad0f2a0d-b3fe-4515-b991-0f1860791665"],
+Cell[CellGroupData[{
+Cell[69402, 2083, 722, 19, 52, "Input",ExpressionUUID->"2d2a5f43-00cf-407d-885a-09e0de0d4f61"],
+Cell[70127, 2104, 205, 3, 34, "Output",ExpressionUUID->"d20247e5-19df-4b31-abd0-44b87b477079"],
+Cell[70335, 2109, 218, 3, 34, "Output",ExpressionUUID->"bc21e7e5-b318-40b0-bb86-bdbfa2b31c54"]
+}, Open  ]],
+Cell[70568, 2115, 414, 15, 43, "Text",ExpressionUUID->"91f806e9-0d0f-4238-bf24-a2ec8dddea81"],
+Cell[CellGroupData[{
+Cell[71007, 2134, 718, 18, 52, "Input",ExpressionUUID->"0799706a-ccca-43fd-aaae-0735f751a769"],
+Cell[71728, 2154, 179, 2, 34, "Output",ExpressionUUID->"98f5e1c9-b868-4bd3-b1d9-026941c4eed7"],
+Cell[71910, 2158, 190, 2, 34, "Output",ExpressionUUID->"7bb3b61a-c3de-4ada-9094-fcda6487f594"]
+}, Open  ]],
+Cell[72115, 2163, 422, 15, 43, "Text",ExpressionUUID->"317291e5-7169-4924-b523-fe3145de4d8d"],
+Cell[CellGroupData[{
+Cell[72562, 2182, 679, 19, 52, "Input",ExpressionUUID->"41e0910c-9933-45f6-9969-4fa8aaa53f3b"],
+Cell[73244, 2203, 153, 2, 34, "Output",ExpressionUUID->"4ce07b40-9081-48d3-b3c8-bb0c3e3ca56d"],
+Cell[73400, 2207, 168, 2, 34, "Output",ExpressionUUID->"98d62a65-a213-433a-80aa-7d6273d047d7"]
+}, Open  ]],
+Cell[73583, 2212, 417, 15, 43, "Text",ExpressionUUID->"61bc96c1-1f57-4926-88de-8998be02a075"],
+Cell[CellGroupData[{
+Cell[74025, 2231, 622, 16, 52, "Input",ExpressionUUID->"466e9608-2e6f-4f93-9af2-3de9226e236d"],
+Cell[74650, 2249, 154, 2, 34, "Output",ExpressionUUID->"31ada25e-d8b5-4094-8f35-9ff5df257dc7"],
+Cell[74807, 2253, 170, 2, 34, "Output",ExpressionUUID->"4654ad3d-a55a-420c-bf79-f0443903188d"]
+}, Open  ]],
+Cell[74992, 2258, 421, 15, 43, "Text",ExpressionUUID->"5c2cc66e-2987-41b1-bf99-8969520f6d11"],
+Cell[CellGroupData[{
+Cell[75438, 2277, 617, 16, 52, "Input",ExpressionUUID->"38432a55-eaf0-4023-9711-e4a4120e55b9"],
+Cell[76058, 2295, 153, 2, 34, "Output",ExpressionUUID->"6b77bb8f-23e7-4af8-b0cb-f0f61fe65a78"],
+Cell[76214, 2299, 169, 2, 34, "Output",ExpressionUUID->"cbdeb7b6-3c2d-4388-9b22-bba33a8dbc95"]
+}, Open  ]],
+Cell[76398, 2304, 471, 16, 43, "Text",ExpressionUUID->"623ea19b-f838-465e-9035-7c54ad2a0462"],
+Cell[CellGroupData[{
+Cell[76894, 2324, 578, 12, 52, "Input",ExpressionUUID->"b7cbac52-c3d1-4ee8-b90a-57a29d7aff72"],
+Cell[77475, 2338, 150, 2, 34, "Output",ExpressionUUID->"dae24f08-73e8-4d5d-843d-fddf36f40717"],
+Cell[77628, 2342, 170, 2, 34, "Output",ExpressionUUID->"04bb131a-01f6-455a-8539-d698e6b541f4"]
+}, Open  ]],
+Cell[77813, 2347, 435, 15, 43, "Text",ExpressionUUID->"08561857-630d-4051-8f99-5aa6d9fa4569"],
+Cell[CellGroupData[{
+Cell[78273, 2366, 679, 18, 52, "Input",ExpressionUUID->"d5a074f1-5446-4f8a-99fe-2c97d87c6b68"],
+Cell[78955, 2386, 155, 2, 34, "Output",ExpressionUUID->"7dd43c7a-5004-44b9-ba87-efc50fb52291"],
+Cell[79113, 2390, 168, 2, 34, "Output",ExpressionUUID->"d3b76e5d-c1c6-44e6-9dcc-3f55d390a8fb"]
+}, Open  ]],
+Cell[79296, 2395, 484, 16, 43, "Text",ExpressionUUID->"7e608980-f3b9-4e6c-a992-049514796e8e"],
+Cell[CellGroupData[{
+Cell[79805, 2415, 693, 18, 52, "Input",ExpressionUUID->"eb8e866b-baa0-47ab-8ab3-544081f4f612"],
+Cell[80501, 2435, 151, 2, 34, "Output",ExpressionUUID->"e4341220-adc0-4522-b686-83e3ffc8eba9"],
+Cell[80655, 2439, 167, 2, 34, "Output",ExpressionUUID->"ae35f7a2-cb00-4b44-b288-90c32800732b"]
+}, Open  ]],
+Cell[80837, 2444, 414, 15, 43, "Text",ExpressionUUID->"99ca34d2-2009-49e2-a148-7e9a35ec67e1"],
+Cell[CellGroupData[{
+Cell[81276, 2463, 545, 15, 52, "Input",ExpressionUUID->"eb49cb73-d188-4374-ad95-85ed86dd9eaa"],
+Cell[81824, 2480, 157, 2, 34, "Output",ExpressionUUID->"e4383ae1-5738-4d8d-84db-d419ac07543f"],
+Cell[81984, 2484, 168, 2, 34, "Output",ExpressionUUID->"301874f6-a871-4517-90ac-63952e3f9473"]
+}, Open  ]],
+Cell[82167, 2489, 678, 10, 31, "Text",ExpressionUUID->"55324201-413b-4bb6-a71a-5f87240f4c3d"],
+Cell[82848, 2501, 184, 4, 41, "Input",ExpressionUUID->"36114977-cbaa-42b1-b883-ee41db2b491b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83081, 2511, 515, 12, 63, "Subchapter",ExpressionUUID->"63946cb1-df17-4cfc-b44a-74b6e61bf1fb"],
+Cell[CellGroupData[{
+Cell[83621, 2527, 81, 0, 59, "Section",ExpressionUUID->"70620f7f-7230-4312-808b-1b09f9bdc265"],
+Cell[CellGroupData[{
+Cell[83727, 2531, 81, 0, 41, "Subsection",ExpressionUUID->"64f7c2f6-92db-4d3c-a617-3822e3320b39"],
+Cell[83811, 2533, 3662, 104, 292, "Text",ExpressionUUID->"9022c9bc-d654-44b6-b187-352bfda4573c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[87510, 2642, 83, 0, 41, "Subsection",ExpressionUUID->"d780682f-59a1-4bd9-8325-524a5b955ff0"],
+Cell[87596, 2644, 4759, 142, 281, "Text",ExpressionUUID->"6a84e6f8-7ba0-4422-a0b9-5948c75915e2"],
+Cell[92358, 2788, 590, 15, 26, "DisplayFormula",ExpressionUUID->"c8a29e81-e308-4553-b402-8d0b4f7957d3"],
+Cell[92951, 2805, 118, 3, 31, "Text",ExpressionUUID->"638bbb6c-a727-4efb-965b-15ea1e31358a"],
+Cell[93072, 2810, 167, 4, 22, "DisplayFormula",ExpressionUUID->"c5715394-cdcc-4fd9-9584-cea7e2ed7e8d"],
+Cell[93242, 2816, 118, 3, 31, "Text",ExpressionUUID->"0f7125cc-9753-432e-9357-75c9d24a783b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93409, 2825, 256, 5, 59, "Section",ExpressionUUID->"d9d8e0f1-b4b5-4da8-a845-3dd5aef4797a"],
+Cell[93668, 2832, 15269, 525, 1694, "Subsection",ExpressionUUID->"27940f42-569a-4da8-b628-f8de725b4ffc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108974, 3362, 136, 6, 89, "Section",ExpressionUUID->"a081dbec-4781-48dc-8900-ab441be0e377"],
+Cell[109113, 3370, 219, 4, 30, "Input",ExpressionUUID->"ae32e957-7064-4279-97d3-c485b546f827"],
+Cell[109335, 3376, 265, 6, 36, "Text",ExpressionUUID->"3762838e-8b1e-411d-a7c1-6a96fb641c97"],
+Cell[CellGroupData[{
+Cell[109625, 3386, 261, 5, 30, "Input",ExpressionUUID->"7230cc86-ddf2-42a1-84e1-9647297ea839"],
+Cell[109889, 3393, 178, 2, 34, "Output",ExpressionUUID->"17bd7571-a981-4826-b7fc-b6c0f74ea969"]
+}, Open  ]],
+Cell[110082, 3398, 246, 6, 36, "Text",ExpressionUUID->"095318cc-20bc-472c-b1f3-36087e98f3b5"],
+Cell[CellGroupData[{
+Cell[110353, 3408, 560, 14, 52, "Input",ExpressionUUID->"d17faeef-5c7e-45be-a947-72c6ec545154"],
+Cell[110916, 3424, 154, 2, 34, "Output",ExpressionUUID->"3905377a-53c2-421e-8f4c-5291f83a40c5"],
+Cell[111073, 3428, 168, 2, 34, "Output",ExpressionUUID->"4a54ee17-4069-4b77-ba3d-c21a5663d912"]
+}, Open  ]],
+Cell[111256, 3433, 239, 6, 36, "Text",ExpressionUUID->"3981d9a5-fafc-47fe-a73e-d6f3dfbc90ec"],
+Cell[CellGroupData[{
+Cell[111520, 3443, 855, 23, 52, "Input",ExpressionUUID->"0bc942af-da6f-449f-bc87-3470e5042f4b"],
+Cell[112378, 3468, 203, 3, 34, "Output",ExpressionUUID->"c70bbec0-1d6d-4065-ae57-5f3d1d98299a"],
+Cell[112584, 3473, 217, 3, 34, "Output",ExpressionUUID->"dfd30cb5-3677-4780-b27e-29e7c85090f9"]
+}, Open  ]],
+Cell[112816, 3479, 236, 5, 36, "Text",ExpressionUUID->"ab2881da-0ff8-4665-a46c-d40c348a2e55"],
+Cell[CellGroupData[{
+Cell[113077, 3488, 836, 24, 52, "Input",ExpressionUUID->"5b575f80-66a1-4d37-afcf-159c27177fd0"],
+Cell[113916, 3514, 152, 2, 34, "Output",ExpressionUUID->"0fff65ab-1c54-485a-a2bf-eb58aedae63b"],
+Cell[114071, 3518, 166, 2, 34, "Output",ExpressionUUID->"9ca60115-bb7b-4549-91b3-f99d2291e8c1"]
+}, Open  ]],
+Cell[114252, 3523, 238, 5, 36, "Text",ExpressionUUID->"a25f37c1-f7dd-4008-a36b-faba612deb94"],
+Cell[CellGroupData[{
+Cell[114515, 3532, 559, 14, 52, "Input",ExpressionUUID->"a8a35eb5-46cf-431c-89f2-60c67171f553"],
+Cell[115077, 3548, 154, 2, 34, "Output",ExpressionUUID->"ff714ec8-f36f-45b1-b2ac-3e3bdad4f1c1"],
+Cell[115234, 3552, 168, 2, 34, "Output",ExpressionUUID->"499146e1-5776-4264-96e6-f0f1281a527c"]
+}, Open  ]],
+Cell[115417, 3557, 247, 6, 36, "Text",ExpressionUUID->"6f6440df-db59-4537-a746-5baf94f58b23"],
+Cell[CellGroupData[{
+Cell[115689, 3567, 663, 17, 52, "Input",ExpressionUUID->"d5da4f3b-65d3-458f-931d-24d327693eb4"],
+Cell[116355, 3586, 154, 2, 34, "Output",ExpressionUUID->"1d7f8055-11ec-4e6f-9bd3-04c3281074eb"],
+Cell[116512, 3590, 167, 2, 34, "Output",ExpressionUUID->"e75d0c03-87be-4bc4-a0c1-15e8b9917aa7"]
+}, Open  ]],
+Cell[116694, 3595, 330, 6, 63, "Input",ExpressionUUID->"c99f5aab-526a-4620-9c8c-d152b055915e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117073, 3607, 572, 12, 63, "Subchapter",ExpressionUUID->"51c4950b-6e5c-4e8a-806d-c9a3bf852783"],
+Cell[CellGroupData[{
+Cell[117670, 3623, 81, 0, 59, "Section",ExpressionUUID->"b908e205-ed09-4a4b-8b70-05d8d81c5189"],
+Cell[CellGroupData[{
+Cell[117776, 3627, 81, 0, 41, "Subsection",ExpressionUUID->"3a6222e9-5672-477d-962f-34587f19ed39"],
+Cell[117860, 3629, 667, 13, 50, "Text",ExpressionUUID->"a70f67ea-2ffc-4c32-9ca2-92bcfaa5eab7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[118564, 3647, 83, 0, 41, "Subsection",ExpressionUUID->"1c352646-4d56-4100-81bd-29db0b40960b"],
+Cell[118650, 3649, 2261, 55, 373, "Text",ExpressionUUID->"4ab558b0-f126-424d-a4e4-31e73d751fb1"],
+Cell[120914, 3706, 3448, 99, 192, "Text",ExpressionUUID->"fd807f01-8d46-468f-b576-33a6f6164532"],
+Cell[124365, 3807, 167, 4, 22, "DisplayFormula",ExpressionUUID->"6844b20f-9540-4775-b6ff-6db7bc20980b"],
+Cell[124535, 3813, 118, 3, 31, "Text",ExpressionUUID->"108f61e4-effc-4503-aae4-070781ef0ccf"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[124702, 3822, 231, 5, 59, "Section",ExpressionUUID->"6db2a3cb-4594-4044-b9f1-ff1c7df50bcf"],
+Cell[CellGroupData[{
+Cell[124958, 3831, 159, 3, 41, "Subsection",ExpressionUUID->"a7065720-d251-4fd1-a07f-54aebc7b0b8c"],
+Cell[125120, 3836, 1385, 33, 146, "Text",ExpressionUUID->"7acc67e9-f6d9-4bb6-98e6-1810602b9320"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[126554, 3875, 127, 3, 59, "Section",ExpressionUUID->"1d736fbf-9487-4f19-b0cd-350f959b60f2"],
+Cell[126684, 3880, 426, 12, 37, "Text",ExpressionUUID->"8a58e08f-5471-4831-b7c1-827cd0506c70"],
+Cell[CellGroupData[{
+Cell[127135, 3896, 2454, 68, 178, "Input",ExpressionUUID->"6670e496-8cef-4c31-bc9a-5bf2004b97a6"],
+Cell[129592, 3966, 302, 4, 34, "Output",ExpressionUUID->"12546c1e-e8b8-4598-afe3-9ca774fae04e"]
+}, Open  ]],
+Cell[129909, 3973, 118, 3, 31, "Text",ExpressionUUID->"56e446e8-a4f1-496a-97d9-5986c0f4054e"],
+Cell[130030, 3978, 392, 11, 37, "Text",ExpressionUUID->"ee0e05cc-9799-448b-b67d-156c591cb095"],
+Cell[CellGroupData[{
+Cell[130447, 3993, 4119, 116, 262, "Input",ExpressionUUID->"cbbc845f-35fa-4fac-a33b-58416d1f1e75"],
+Cell[134569, 4111, 401, 6, 34, "Output",ExpressionUUID->"5adf3c6e-d028-45ba-8d86-7b6b303991c9"]
+}, Open  ]],
+Cell[134985, 4120, 402, 8, 36, "Text",ExpressionUUID->"6661eaf4-81d0-47b9-8cab-e0a3cb318e49"],
+Cell[135390, 4130, 791, 17, 73, "Input",ExpressionUUID->"5722aec1-677f-440b-82bc-a6c1d3e310ec"],
+Cell[136184, 4149, 311, 6, 36, "Text",ExpressionUUID->"7f9515c0-523b-4033-aae3-02ac5963429f"],
+Cell[CellGroupData[{
+Cell[136520, 4159, 1089, 22, 52, "Input",ExpressionUUID->"8db8913d-a7cb-4faa-937d-cddedd55893a"],
+Cell[137612, 4183, 439, 8, 34, "Output",ExpressionUUID->"7cbac629-92c8-4ce7-af79-37edc36af201"],
+Cell[138054, 4193, 1404, 36, 77, "Output",ExpressionUUID->"4913ba7e-f567-420f-9b78-078a69897c7a"]
+}, Open  ]],
+Cell[139473, 4232, 291, 6, 36, "Text",ExpressionUUID->"fc0649ac-40cc-4f95-bec9-21c0199967d5"],
+Cell[CellGroupData[{
+Cell[139789, 4242, 698, 14, 52, "Input",ExpressionUUID->"3a861ea6-8667-4c26-a061-1f495196a5f7"],
+Cell[140490, 4258, 1945, 45, 217, "Output",ExpressionUUID->"fda80e45-97d1-47be-9b53-edb3de73de2a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
